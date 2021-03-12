@@ -1,0 +1,28 @@
+* text=auto
+*.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+* text=auto
+*.css linguist-vendored
+*.scss linguist-vendored
+*.php text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.lock text eol=lf
+*.xml text eol=lf
+*.txt text eol=lf
+*.svg text eol=lf
+*.sh text eol=lf
+*.html text eol=lf
+*.vue text eol=lf
+*.md text eol=lf
+*.htaccess text eol=lf
+*.gitignore text eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.gif binary
+*.pdf binary
+artisan text eol=lf
+CHANGELOG.md export-ignore
