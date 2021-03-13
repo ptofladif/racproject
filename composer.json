@@ -8,13 +8,14 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "bugsnag/bugsnag-laravel": "^2.15",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "yajra/laravel-datatables-oracle": "~9.0"
+        "yajra/laravel-datatables-oracle": "~9.0",
+        "laravelcollective/html": "^6.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

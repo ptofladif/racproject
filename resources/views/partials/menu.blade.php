@@ -1,8 +1,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 917px;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">RAC</span>
+        <span class="brand-text" style="padding-left: 1rem">RAC</span>
     </a>
+
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -87,7 +88,7 @@
 
                 @can('car_access')
                     <li class="nav-item">
-                        <a href="{{ route("admin.cars.index") }}" class="nav-link {{ request()->is('admin/cars') || request()->is('admin/cars/*') ? 'active' : '' }}">
+                        <a href="{{ route("cars.index") }}" class="nav-link {{ request()->is('cars') || request()->is('cars/*') ? 'active' : '' }}">
                             <i class="fas fa-car">
 
                             </i>
@@ -99,7 +100,7 @@
                 @endcan
                 @can('rent_access')
                     <li class="nav-item">
-                        <a href="{{ route("admin.rents.index") }}" class="nav-link {{ request()->is('admin/rents') || request()->is('admin/rents/*') ? 'active' : '' }}">
+                        <a href="{{ route("rents.index") }}" class="nav-link {{ request()->is('rents') || request()->is('rents/*') ? 'active' : '' }}">
                             <i class="fas fa-list">
 
                             </i>

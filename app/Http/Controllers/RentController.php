@@ -18,7 +18,7 @@ class RentController extends Controller
 
         $rents = Rent::all();
 
-        return view('admin.rents.index', compact('rents'));
+        return view('rents.index', compact('rents'));
     }
 
     /**
@@ -30,7 +30,7 @@ class RentController extends Controller
     {
         abort_unless(\Gate::allows('rent_create'), 403);
 
-        return view('admin.rents.create');
+        return view('rents.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class RentController extends Controller
     {
         abort_unless(\Gate::allows('rent_show'), 403);
 
-        return view('admin.rents.show', compact('rent'));
+        return view('rents.show', compact('rent'));
     }
 
     /**
@@ -71,7 +71,7 @@ class RentController extends Controller
     {
         abort_unless(\Gate::allows('rent_edit'), 403);
 
-        return view('admin.rents.edit', compact('rent'));
+        return view('rents.edit', compact('rent'));
     }
 
     /**

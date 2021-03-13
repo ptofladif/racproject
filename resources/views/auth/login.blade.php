@@ -39,27 +39,22 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-8">
-                        <input type="checkbox" name="remember"> {{ trans('global.remember_me') }}
-                    </div>
                     <!-- /.col -->
-                    <div class="col-4">
+                    <div class="col-12">
                         <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('global.login') }}</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
-
-            <p class="mb-1">
+            <p class="mb-1" style="margin-top: 0.5rem">
                 <a class="" href="{{ route('password.request') }}">
                     {{ trans('global.forgot_password') }}
                 </a>
             </p>
-            <p class="mb-0">
-
-            </p>
             <p class="mb-1">
-
+                <a class="" href="{{ route('register') }}">
+                    {{ trans('global.register') }}
+                </a>
             </p>
         </div>
         <!-- /.login-card-body -->

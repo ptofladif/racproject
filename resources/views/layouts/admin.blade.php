@@ -31,6 +31,9 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
                 </li>
+                <li class="nav-item" style="font-size:1.5rem">
+                    <span>{{ auth()->user()->name }}</span>
+                </li>
             </ul>
 
             <!-- Right navbar links -->
@@ -62,9 +65,9 @@
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.0-alpha
+                <b>Version</b> 1.0
             </div>
-            <strong> &copy;</strong> {{ trans('global.allRightsReserved') }}
+            <strong>MF&copy;</strong> {{ trans('global.allRightsReserved') }}
         </footer>
         <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}

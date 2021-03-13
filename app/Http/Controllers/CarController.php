@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Car;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Repository\CarsRepository;
+use App\Brand;
 
 class CarController extends Controller
 {
@@ -17,9 +18,12 @@ class CarController extends Controller
     {
         abort_unless(\Gate::allows('car_access'), 403);
 
-        $cars = Car::all();
+        $brands = Brand::orderBy('title')->pluck('title','id')->toArray();
+        $viewModel=[
+            'brands'=>$brands,
+        ];
 
-        return view('cars.index', compact('cars'));
+        return view('cars.index', $viewModel);
     }
 
     /**
@@ -32,6 +36,7 @@ class CarController extends Controller
      */
     public function search(Request $request, CarsRepository $repository)
     {
+        dd(1);
         return $repository->search($request);
     }
 

@@ -64,6 +64,11 @@
                     </div>
                 </div>
             </form>
+            <p class="mb-1" style="margin-top: 0.5rem">
+                <a class="" href="{{ route('login') }}">
+                    {{ trans('global.already_registered') }}
+                </a>
+            </p>
         </div>
     </div>
 </div>
