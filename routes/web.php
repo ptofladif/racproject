@@ -4,7 +4,7 @@ Route::redirect('/', '/login');
 
 Route::redirect('/home', '/admin');
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -24,4 +24,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('products/destroy', 'ProductsController@massDestroy')->name('products.massDestroy');
 
     Route::resource('products', 'ProductsController');
+
+    Route::resource('cars', 'CarController');
+
+    Route::resource('rents', 'RentController');
+
+});
+
+Route::group(['prefix' => 'Cars', 'as' => 'cars.'], function () {
+    Route::get('index', ['as' => 'index', 'uses' => 'CarController@index']);
+    Route::get('search', ['as' => 'search', 'uses' => 'CarController@search']);
+});
+//
+Route::group(['prefix' => 'Rents', 'as' => 'rents.'], function () {
+    Route::get('index', ['as' => 'index', 'uses' => 'RentController@index']);
+    Route::get('search', ['as' => 'search', 'uses' => 'RentController@search']);
+    Route::get('create', ['as' => 'create', 'uses' => 'RentController@create']);
+    Route::post('store', ['as' => 'store', 'uses' => 'RentController@store']);
 });

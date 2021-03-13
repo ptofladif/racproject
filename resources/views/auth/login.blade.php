@@ -50,8 +50,6 @@
                 </div>
             </form>
 
-
-
             <p class="mb-1">
                 <a class="" href="{{ route('password.request') }}">
                     {{ trans('global.forgot_password') }}

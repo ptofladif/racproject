@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 917px;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">Project</span>
+        <span class="brand-text font-weight-light">RAC</span>
     </a>
 
     <!-- Sidebar -->
@@ -80,6 +80,31 @@
                             </i>
                             <p>
                                 <span>{{ trans('global.product.title') }}</span>
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+
+                @can('car_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.cars.index") }}" class="nav-link {{ request()->is('admin/cars') || request()->is('admin/cars/*') ? 'active' : '' }}">
+                            <i class="fas fa-car">
+
+                            </i>
+                            <p>
+                                <span>{{ trans('global.car.title') }}</span>
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('rent_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.rents.index") }}" class="nav-link {{ request()->is('admin/rents') || request()->is('admin/rents/*') ? 'active' : '' }}">
+                            <i class="fas fa-list">
+
+                            </i>
+                            <p>
+                                <span>{{ trans('global.rent.title') }}</span>
                             </p>
                         </a>
                     </li>

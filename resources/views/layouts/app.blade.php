@@ -14,7 +14,12 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
 </head>
 
-<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page">
+<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page"style="background-color: #2a2925;
+    background: url(/img/LoginBackground_new.jpg) no-repeat center center fixed;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;">
     @yield('content')
 </body>
 
