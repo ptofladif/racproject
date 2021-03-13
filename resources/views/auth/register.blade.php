@@ -3,11 +3,11 @@
 @section('content')
 <div class="register-box">
     <div class="login-logo">
-        <div class="login-logo">
-            <a href="#">
+        <strong>
+            <a href="#" style="color: white;">
                 {{ trans('global.site_title') }}
             </a>
-        </div>
+        </strong>
     </div>
     <div class="card">
         <div class="card-body">

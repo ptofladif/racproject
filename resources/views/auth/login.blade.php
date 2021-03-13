@@ -2,11 +2,11 @@
 @section('content')
 <div class="login-box">
     <div class="login-logo">
-        <div class="login-logo">
-            <a href="#">
+        <strong>
+            <a href="#" style="color: white;">
                 {{ trans('global.site_title') }}
             </a>
-        </div>
+        </strong>
     </div>
     <div class="card">
         <div class="card-body login-card-body">
@@ -20,7 +20,7 @@
                 {{ csrf_field() }}
                 <div class="form-group has-feedback">
                     <div class="input-group">
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ trans('global.login_email') }}" name="email">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ trans('global.login_email') }}" name="email" required autofocus>
                         @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }}
