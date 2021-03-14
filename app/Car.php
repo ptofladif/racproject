@@ -23,4 +23,12 @@ class Car extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    /**
+     * The brand relation
+     */
+    public function brand()
+    {
+        return $this->hasOne('App\Brand', 'id','brand_id');
+    }
 }

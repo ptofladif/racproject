@@ -2,7 +2,7 @@
 
 <div class="card no-border no-shadow">
     <div class="card-header with-border">
-        <i class="fa fa-filter"></i>Pesquisa
+        <i class="fa fa-filter"></i>Search
         <div class="card-tools pull-right">
             <button title="Expandir filtros" class="btn btn-sm" data-widget="collapse">
                 <i class="fa fa-minus"></i>
@@ -10,16 +10,20 @@
         </div>
     </div>
     <div class="card-body form-group">
-        <div class="col-md-4">
-            <label class="text-sm text-nowrap">Marca</label>
+        <div class="col-md-3">
+            <label class="text-sm text-nowrap">Brand</label>
             {!! Form::select('brandId',[null=>''] +$brands,!empty($request['brandId'])?$request['brandId']:'',['id'=>'brandId','class'=>'form-control form-filter']) !!}
         </div>
-        <div class="col-md-4">
-            <label class="text-sm text-nowrap">Valor mínimo</label>
+        <div class="col-md-3">
+            <label class="text-sm text-nowrap">Plate</label>
+            {!! Form::input('text', 'plate', !empty($request['plate'])?$request['plate']:'',['id'=>'plate','class'=>'form-control form-filter']) !!}
+        </div>
+        <div class="col-md-3">
+            <label class="text-sm text-nowrap">Min Daily Price</label>
             {!! Form::input('text', 'minvalue', !empty($request['minvalue'])?$request['minvalue']:'',['id'=>'minvalueId','class'=>'form-control form-filter']) !!}
         </div>
-        <div class="col-md-4">
-            <label class="text-sm text-nowrap">Valor máximo</label>
+        <div class="col-md-34">
+            <label class="text-sm text-nowrap">Max Daily Price</label>
             {!! Form::input('text', 'maxvalue', !empty($request['maxvalue'])?$request['maxvalue']:'',['id'=>'maxvalueId','class'=>'form-control form-filter']) !!}
         </div>
     </div>

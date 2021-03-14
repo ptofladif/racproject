@@ -33,7 +33,7 @@ class CarsRepository
             ->leftJoin('brands', 'cars.brand_id', '=', 'brands.id')
             ->select([
                 'cars.plate',
-                'brands.id',
+                'brands.title as brand',
                 'cars.daily_price',
             ])
         ;
@@ -57,15 +57,20 @@ class CarsRepository
      */
     protected function handleFilters(Builder $query, Request $request) {
         $query
-//            ->when($plate = $request->plate, function ($q) use ($plate) {
-//                $q->where('plate','like','%'.$plate.'%');
-//            })
-//            ->when($minvalue = $request->minvalue, function ($q) use ($minvalue) {
-//                $q->where('daily_price','>',$minvalue);
-//            })
-//            ->when($maxvalue = $request->maxvalue, function ($q) use ($maxvalue) {
-//                $q->where('daily_price','<like>',$maxvalue);
-//            })
+            ->when($brandId = $request->brandId, function ($q) use ($brandId) {
+                $q->whereHas('brand', function ($q2) use($brandId) {
+                    return $q2->where('id',$brandId);
+                });
+            })
+            ->when($plate = $request->plate, function ($q) use ($plate) {
+                $q->where('plate','like','%'.$plate.'%');
+            })
+            ->when($minvalue = $request->minvalue, function ($q) use ($minvalue) {
+                $q->where('daily_price','>',$minvalue);
+            })
+            ->when($maxvalue = $request->maxvalue, function ($q) use ($maxvalue) {
+                $q->where('daily_price','<like>',$maxvalue);
+            })
             ;
     }
 }
