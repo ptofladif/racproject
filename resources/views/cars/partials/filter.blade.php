@@ -22,7 +22,7 @@
             <label class="text-sm text-nowrap">Min Daily Price</label>
             {!! Form::input('text', 'minvalue', !empty($request['minvalue'])?$request['minvalue']:'',['id'=>'minvalueId','class'=>'form-control form-filter']) !!}
         </div>
-        <div class="col-md-34">
+        <div class="col-md-3">
             <label class="text-sm text-nowrap">Max Daily Price</label>
             {!! Form::input('text', 'maxvalue', !empty($request['maxvalue'])?$request['maxvalue']:'',['id'=>'maxvalueId','class'=>'form-control form-filter']) !!}
         </div>

@@ -66,10 +66,10 @@ class CarsRepository
                 $q->where('plate','like','%'.$plate.'%');
             })
             ->when($minvalue = $request->minvalue, function ($q) use ($minvalue) {
-                $q->where('daily_price','>',$minvalue);
+                $q->where('daily_price','>=',$minvalue);
             })
             ->when($maxvalue = $request->maxvalue, function ($q) use ($maxvalue) {
-                $q->where('daily_price','<like>',$maxvalue);
+                $q->where('daily_price','<=',$maxvalue);
             })
             ;
     }
