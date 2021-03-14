@@ -16,9 +16,10 @@ class CarController extends Controller
      */
     public function index()
     {
-        abort_unless(\Gate::allows('car_access'), 403);
+       abort_unless(\Gate::allows('car_access'), 403);
 
         $brands = Brand::orderBy('title')->pluck('title','id')->toArray();
+
         $viewModel=[
             'brands'=>$brands,
         ];
@@ -36,7 +37,6 @@ class CarController extends Controller
      */
     public function search(Request $request, CarsRepository $repository)
     {
-        dd(1);
         return $repository->search($request);
     }
 

@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="pt">
 
-    <title>{{ trans('global.site_title') }}</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/css/adminltev3.css" rel="stylesheet" />
-    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
-</head>
+@section('htmlheader')
+    @include('layouts.partials.htmlheader')
+@show
 
-<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page"style="background-color: #2a2925;
+<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page" style="background-color: #2a2925;
     background: url(/img/LoginBackground_new.jpg) no-repeat center center fixed;
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
 			background-size: cover;">
-    @yield('content')
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Your Page Content Here -->
+        @yield('content')
+    </section><!-- /.content -->
 </body>
 
 </html>

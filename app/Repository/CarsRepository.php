@@ -25,20 +25,27 @@ class CarsRepository
      * @throws \Exception
      */
     public function search(Request $request) {
-        $CarsQuery = Car::model();
+        $CarsQuery = Car::query();
 
         $this->handleFilters($CarsQuery, $request);
 
         $Cars = $CarsQuery
-            ;
-        dd($Cars);
+            ->leftJoin('brands', 'cars.brand_id', '=', 'brands.id')
+            ->select([
+                'cars.plate',
+                'brands.id',
+                'cars.daily_price',
+            ])
+        ;
+
         return DataTables::of($Cars)
-            ->addColumn('details_url', function(Car $car) {
-                return route('api.master_caroptions_details', $car->idv);
-            })
-            ->addColumn('action', function (Car $car) {
-                return '<a href="#" id="car-div-'.$car->id.'" ><i class="fa fa-send-o" style="color:green;" title="Alugar"></i></a>';
-            })
+//            ->addColumn('details_url', function(Car $car) {
+////                return route('api.master_caroptions_details', $car->idv);
+//                return [];
+//            })
+//            ->addColumn('action', function (Car $car) {
+//                return '<a href="#" id="car-id-'.$car->id.'" ><i class="fa fa-send-o" style="color:green;" title="Alugar"></i></a>';
+//            })
             ->make();
     }
 
@@ -50,15 +57,15 @@ class CarsRepository
      */
     protected function handleFilters(Builder $query, Request $request) {
         $query
-            ->when($plate = $request->plate, function ($q) use ($plate) {
-                $q->where('plate','like','%'.$plate.'%');
-            })
-            ->when($minvalue = $request->minvalue, function ($q) use ($minvalue) {
-                $q->where('daily_price','>',$minvalue);
-            })
-            ->when($maxvalue = $request->maxvalue, function ($q) use ($maxvalue) {
-                $q->where('daily_price','<like>',$maxvalue);
-            })
+//            ->when($plate = $request->plate, function ($q) use ($plate) {
+//                $q->where('plate','like','%'.$plate.'%');
+//            })
+//            ->when($minvalue = $request->minvalue, function ($q) use ($minvalue) {
+//                $q->where('daily_price','>',$minvalue);
+//            })
+//            ->when($maxvalue = $request->maxvalue, function ($q) use ($maxvalue) {
+//                $q->where('daily_price','<like>',$maxvalue);
+//            })
             ;
     }
 }

@@ -4,7 +4,6 @@
         <span class="brand-text" style="padding-left: 1rem">RAC</span>
     </a>
 
-
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user (optional) -->

@@ -6,7 +6,8 @@
     <div id="modal-rent-create"></div>
 @endsection
 
-@section('scriptOnPage')
+@section('scripts')
+@parent
     @include('cars.partials.js.scripts')
 {{--    @include('stkCarLeads.partials.js.scripts')--}}
 @endsection

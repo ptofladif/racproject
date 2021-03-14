@@ -16,7 +16,7 @@ return [
     |
      */
 
-    'default' => env('LOG_CHANNEL', 'stack'),
+    'default' => env('LOG_CHANNEL', 'daily'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,6 +51,7 @@ return [
             'path'   => storage_path('logs/laravel.log'),
             'level'  => 'debug',
             'days'   => 14,
+            'permission' => 0666,
         ],
 
         'slack' => [

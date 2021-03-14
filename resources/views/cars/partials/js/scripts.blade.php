@@ -1,24 +1,23 @@
-<script id="details-template" type="text/x-handlebars-template">
-    @verbatim
-    <div class="label label-default">Opcionais</div>
-    <table class="table details-table" id="caroptions_{{idv}}">
-        <thead>
-        <tr class="mcbackground-soft">
-            <th>Código</th>
-            <th>Descrição</th>
-        </tr>
-        </thead>
-    </table>
-    @endverbatim
-</script>
+{{--<script id="details-template" type="text/x-handlebars-template">--}}
+{{--    @verbatim--}}
+{{--    <div class="label label-default">Opcionais</div>--}}
+{{--    <table class="table details-table" id="caroptions_{{idv}}">--}}
+{{--        <thead>--}}
+{{--        <tr class="mcbackground-soft">--}}
+{{--            <th>Código</th>--}}
+{{--            <th>Descrição</th>--}}
+{{--        </tr>--}}
+{{--        </thead>--}}
+{{--    </table>--}}
+{{--    @endverbatim--}}
+{{--</script>--}}
 
 <script>
 
-    let template = Handlebars.compile($("#details-template").html());
+    // let template = Handlebars.compile($("#details-template").html());
 
     let dataTableInstance = null;
-
-    let Cars = function () {
+    let Car = function () {
 
         let ajaxParams = {};
 
@@ -45,7 +44,6 @@
                 },
                 drawCallback: function (oSettings) { // run some code on table redraw
 
-
                     displaySpinner(false);
                 },
                 initComplete: function(settings, json){
@@ -60,14 +58,13 @@
 
                 },
                 order: [
-                    [14, 'desc']
                 ],
                 columns: [
-                    {data: null, className: 'details-control', orderable: false, defaultContent: '', searchable: false, width: '1%'},
-                    {data: 'action', className: 'create-lead', orderable: false, searchable: false, width: '1%'},
-                    {data: 'plate', name: 'plate', title: 'Matrícula', className:'text-center', width: '8%'},
-                    {data: 'brand', name: 'brands.title', title: 'Marca', className:'input-sm text-nowrap', width: '8%'},
-                    // {data: 'online_value', name: 'online_value', title: 'Valor', className:'text-right text-nowrap',width: '5%'},
+                    // {data: null, className: 'details-control', orderable: false, defaultContent: '', searchable: false, width: '1%'},
+                    // {data: 'action', className: 'create-rent', orderable: false, searchable: false, width: '1%'},
+                    {data: 'brand', name: 'brands.title', title: 'Brand', className:'input-sm text-nowrap', width: '8%'},
+                    {data: 'plate', name: 'plate', title: 'Plate', className:'text-center', width: '8%'},
+                    {data: 'daily_price', name: 'daily_price', title: 'Daily price', className:'text-right text-nowrap',width: '5%'},
 
                 ],
                 language: {
@@ -132,7 +129,7 @@
 
     $(document).ready(function () {
 
-        CarStock.initSearch();
+        Car.initSearch();
 
         // Add event listener for opening and closing details
         $('#carstable tbody').on('click', 'td.details-control', function () {
@@ -157,17 +154,17 @@
 
         $("#carstable tbody").on("click", "td.create-rent", function(){
 
-            let tr = $(this).closest('tr');
+            {{--let tr = $(this).closest('tr');--}}
 
-            let row = dataTableInstance.row(tr).data();
+            {{--let row = dataTableInstance.row(tr).data();--}}
 
-            let route = '{!! route('rents.create') !!}';
+            {{--let route = '{!! route('rents.create') !!}';--}}
 
-            route = route + '?idv=' + row['idv'];
+            {{--route = route + '?idv=' + row['idv'];--}}
 
-            $('#modal-lead-create').load(route, function (result) {
-                $('#create-lead-modal').modal('show');
-            })
+            {{--$('#modal-lead-create').load(route, function (result) {--}}
+            {{--    $('#create-lead-modal').modal('show');--}}
+            {{--})--}}
 
         });
 
