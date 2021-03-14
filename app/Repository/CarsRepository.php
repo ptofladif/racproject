@@ -53,6 +53,12 @@ class CarsRepository
             ->when($plate = $request->plate, function ($q) use ($plate) {
                 $q->where('plate','like','%'.$plate.'%');
             })
+            ->when($minvalue = $request->minvalue, function ($q) use ($minvalue) {
+                $q->where('daily_price','>',$minvalue);
+            })
+            ->when($maxvalue = $request->maxvalue, function ($q) use ($maxvalue) {
+                $q->where('daily_price','<like>',$maxvalue);
+            })
             ;
     }
 }
