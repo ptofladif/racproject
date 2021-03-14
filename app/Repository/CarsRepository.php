@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Car;
-use App\User;
+use App\Brand;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -29,24 +29,31 @@ class CarsRepository
 
         $this->handleFilters($CarsQuery, $request);
 
-        $Cars = $CarsQuery
-            ->leftJoin('brands', 'cars.brand_id', '=', 'brands.id')
+        $Cars = $CarsQuery->with('brand')
+//            ->leftJoin('brands', 'cars.brand_id', '=', 'brands.id')
             ->select([
+                'cars.id',
                 'cars.plate',
-                'brands.title as brand',
                 'cars.daily_price',
+                'cars.brand_id',
             ])
         ;
 
         return DataTables::of($Cars)
-//            ->addColumn('details_url', function(Car $car) {
-////                return route('api.master_caroptions_details', $car->idv);
-//                return [];
-//            })
-//            ->addColumn('action', function (Car $car) {
-//                return '<a href="#" id="car-id-'.$car->id.'" ><i class="fa fa-send-o" style="color:green;" title="Alugar"></i></a>';
-//            })
-            ->make();
+            ->addColumn('details_url', function(Car $car) {
+                return route('api.master_rent_details', $car->id);
+            })
+            ->addColumn('action', function (Car $car) {
+                return '<a href="#" id="car-id-'.$car->id.'"> <i class="fas fa-car" style="color:green;" title="Alugar"></i></a>';
+            })
+            ->editColumn('brand', function (Car $car) {
+
+//                return $car->brand->icon;
+
+                return asset('public/img/brands/'.$car->brand->icon);
+            })
+            ->make()
+            ;
     }
 
     /**

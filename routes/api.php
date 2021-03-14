@@ -9,3 +9,5 @@ Route::group(['prefix' => 'v1', 'as' => 'admin.', 'namespace' => 'Api\V1\Admin']
 
     Route::apiResource('products', 'ProductsApiController');
 });
+
+Route::get('/master_rent_details/{id}', 'RentController@getRents')->name('api.master_rent_details');

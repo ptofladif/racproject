@@ -1,9 +1,13 @@
 @extends('layouts.admin')
 
-@section('content')
+@section('contentheader_title')
+    Cars
+@endsection
+
+@section('main-content')
     @include('cars.partials.filter')
     @include('cars.partials.table')
-    <div id="modal-rent-create"></div>
+    <div id="modal-car-create"></div>
 @endsection
 
 @section('scripts')

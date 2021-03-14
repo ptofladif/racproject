@@ -58,3 +58,17 @@ table.dataTable thead .sorting_desc {
     float: left !important;
 }
 
+td.details-control {
+    background: url('../img/icons/details_open.png') no-repeat center center;
+    background-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+tr.shown td.details-control {
+    background: url('../img/icons/details_close.png') no-repeat center center;
+    background-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+}
+

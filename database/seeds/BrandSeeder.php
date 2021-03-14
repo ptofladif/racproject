@@ -17,7 +17,7 @@ class BrandSeeder extends Seeder
                 'id' => '1',
                 'title'=>'ALFA ROMEO',
                 'name'=>'AL',
-                'icon'=>'alfa.png',
+                'icon'=>'alfaromeo.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

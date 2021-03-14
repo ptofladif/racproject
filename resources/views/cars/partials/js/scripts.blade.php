@@ -1,16 +1,18 @@
-{{--<script id="details-template" type="text/x-handlebars-template">--}}
-{{--    @verbatim--}}
-{{--    <div class="label label-default">Opcionais</div>--}}
-{{--    <table class="table details-table" id="caroptions_{{idv}}">--}}
-{{--        <thead>--}}
-{{--        <tr class="mcbackground-soft">--}}
-{{--            <th>Código</th>--}}
-{{--            <th>Descrição</th>--}}
-{{--        </tr>--}}
-{{--        </thead>--}}
-{{--    </table>--}}
-{{--    @endverbatim--}}
-{{--</script>--}}
+<script id="details-template" type="text/x-handlebars-template">
+    @verbatim
+    <div class="label label-default">Car Rents</div>
+    <table class="table details-table" id="car_{{id}}">
+        <thead>
+        <tr class="">
+            <th>User</th>
+            <th>Date From</th>
+            <th>Date To</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+    </table>
+    @endverbatim
+</script>
 
 <script>
 
@@ -50,9 +52,26 @@
 
                 },
                 columnDefs: [
+                    {
+                        targets:[2],
+                        createdCell: function (td, cellData, rowData, row, col) {
+                            console.log(cellData);
+                            $(td).html('<img src="'+cellData+'" height="30">');
 
-                    // {
-                    //     targets: 11, "width": "10%", render: $.fn.dataTable.render.number(' ',',', 2 , '',' €') },
+                            // switch(cellData["contact_status_id"] )
+                            // {
+                            //     case 0:
+                            //     case 2:
+                            //     case 3:
+                            //         $(td).addClass('startcontact-control');
+                            //         $(td).html('<a href="#"><i class="fa fa-phone" title="Iniciar Contacto" style="color:green;"></i></a>');
+                            //         break;
+                            //     default:
+                            //         $(td).html('<i class="fa fa-tty" title="Contacto concluído" style="color:red;"></i>');
+                            //         break;
+                            // }
+                        }
+                    },
                 ],
                 fnRowCallback: function(nRow , aData, iDisplayIndex, iDisplayIndexFull ) {
 
@@ -60,8 +79,8 @@
                 order: [
                 ],
                 columns: [
-                    // {data: null, className: 'details-control', orderable: false, defaultContent: '', searchable: false, width: '1%'},
-                    // {data: 'action', className: 'create-rent', orderable: false, searchable: false, width: '1%'},
+                    {data: null, className: 'details-control', orderable: false, defaultContent: '', searchable: false, width: '1%'},
+                    {data: 'action', className: 'create-rent', orderable: false, searchable: false, width: '1%'},
                     {data: 'brand', name: 'brands.title', title: 'Brand', className:'input-sm text-nowrap', width: '8%'},
                     {data: 'plate', name: 'plate', title: 'Plate', className:'text-center', width: '8%'},
                     {data: 'daily_price', name: 'daily_price', title: 'Daily price', className:'text-right text-nowrap',width: '5%'},
@@ -134,37 +153,37 @@
         // Add event listener for opening and closing details
         $('#carstable tbody').on('click', 'td.details-control', function () {
 
-            // var tr = $(this).closest('tr');
-            // var row = dataTableInstance.row(tr);
-            //
-            // var tableId = 'caroptions_' + row.data().idv;
-            //
-            // if (row.child.isShown()) {
-            //     // This row is already open - close it
-            //     row.child.hide();
-            //     tr.removeClass('shown');
-            // } else {
-            //     // Open this row
-            //     row.child(template(row.data())).show();
-            //     initTable(tableId, row.data());
-            //     tr.addClass('shown');
-            //     tr.next().find('td').addClass('no-padding bg-gray');
-            // }
+            var tr = $(this).closest('tr');
+            var row = dataTableInstance.row(tr);
+
+            var tableId = 'car_' + row.data().id;
+
+            if (row.child.isShown()) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            } else {
+                // Open this row
+                row.child(template(row.data())).show();
+                initTable(tableId, row.data());
+                tr.addClass('shown');
+                tr.next().find('td').addClass('no-padding bg-gray');
+            }
         });
 
         $("#carstable tbody").on("click", "td.create-rent", function(){
 
-            {{--let tr = $(this).closest('tr');--}}
+            let tr = $(this).closest('tr');
 
-            {{--let row = dataTableInstance.row(tr).data();--}}
+            let row = dataTableInstance.row(tr).data();
 
-            {{--let route = '{!! route('rents.create') !!}';--}}
+            let route = '{!! route('rents.create') !!}';
 
-            {{--route = route + '?idv=' + row['idv'];--}}
+            route = route + '?id=' + row['id'];
 
-            {{--$('#modal-lead-create').load(route, function (result) {--}}
-            {{--    $('#create-lead-modal').modal('show');--}}
-            {{--})--}}
+            $('#modal-rent-create').load(route, function (result) {
+                $('#create-rent-modal').modal('show');
+            })
 
         });
 
@@ -186,15 +205,17 @@
 
             ],
             columns: [
-                { data: 'code', name: 'code', title: 'Código', width: '10%'},
-                { data: 'designation', name: 'designation', title: 'Descrição', width: '50%'}
+                { data: 'user', name: 'users.name', title: 'Cliente', width: '10%'},
+                { data: 'date_from', name: 'date_from', title: 'Date from', width: '10%'},
+                { data: 'date_to', name: 'date_to', title: 'Date to', width: '10%'},
+                { data: 'total_cost', name: 'total_cost', title: 'Total cost', width: '50%'}
             ],
             order: [
 
             ],
             language: {
                 info: "",
-                zeroRecords: "Sem resultados",
+                zeroRecords: "No Results",
             },
         })
     }

@@ -1,10 +1,8 @@
 @extends('layouts.admin')
-@section('content')
 
 @section('main-content')
-{{--    @include('cars.partials.filter')--}}
-    @include('cars.partials.table')
-    <div id="modal-rent-create"></div>
+    @include('rents.partials.filter')
+    @include('rents.partials.table')
 @endsection
 
 @section('scriptOnPage')
