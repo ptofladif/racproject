@@ -1,3 +1,3 @@
-<table class="table table-bordered table-striped" id="carstable">
+<table class="table table-bordered table-striped" id="rentstable">
     <thead></thead>
 </table>

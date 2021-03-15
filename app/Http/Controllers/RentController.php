@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Rent;
 use Illuminate\Http\Request;
 use App\Repository\RentsRepository;
-
+use App\Car;
 class RentController extends Controller
 {
     /**
@@ -40,11 +40,19 @@ class RentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         abort_unless(\Gate::allows('rent_create'), 403);
 
-        return view('rents.create');
+        $model = Car::with('brand')
+            ->where('id',$request->id)
+            ->first();
+
+        $viewModel=[
+            'model'=>$model,
+        ];
+
+        return view('rents.create',$viewModel);
     }
 
     /**

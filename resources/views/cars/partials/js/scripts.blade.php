@@ -94,6 +94,9 @@
                     {data: 'rented', name: 'rented', title: 'Estado', className:'text-right text-nowrap',width: '5%'},
 
                 ],
+                language: {
+                    thousands: ".",
+                },
                 buttons: [
                 ],
                 scrollX: "100%",
@@ -173,8 +176,9 @@
             let route = '{!! route('rents.create') !!}';
 
             route = route + '?id=' + row['id'];
-
+console.log(route);
             $('#modal-rent-create').load(route, function (result) {
+                console.log(result);
                 $('#create-rent-modal').modal('show');
             })
 
