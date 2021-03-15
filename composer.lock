@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9793db97b25bf783f25916aa66dd0b7",
+    "content-hash": "cd26bf022dab892d48c88895082238bb",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -326,6 +326,61 @@
                 "source": "https://github.com/bugsnag/bugsnag-psr-logger/tree/master"
             },
             "time": "2020-02-26T22:02:20+00:00"
+        },
+        {
+            "name": "components/handlebars.js",
+            "version": "v4.7.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/handlebars.js.git",
+                "reference": "17bcc2c774d5ee604f926cef2d1ef7c55972a3a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/handlebars.js/zipball/17bcc2c774d5ee604f926cef2d1ef7c55972a3a6",
+                "reference": "17bcc2c774d5ee604f926cef2d1ef7c55972a3a6",
+                "shasum": ""
+            },
+            "require": {
+                "robloach/component-installer": "*"
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "name": "handlebars",
+                    "scripts": [
+                        "handlebars.js"
+                    ],
+                    "files": [
+                        "handlebars.runtime.js"
+                    ],
+                    "shim": {
+                        "exports": "Handlebars"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Wanstrath",
+                    "homepage": "http://chriswanstrath.com"
+                }
+            ],
+            "description": "Handlebars.js and Mustache are both logicless templating languages that keep the view and the code separated like we all know they should be.",
+            "homepage": "http://handlebarsjs.com",
+            "keywords": [
+                "handlebars",
+                "html",
+                "mustache"
+            ],
+            "support": {
+                "issues": "https://github.com/components/handlebars.js/issues",
+                "source": "https://github.com/components/handlebars.js/tree/v4.7.7"
+            },
+            "time": "2021-02-15T09:39:39+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -1415,6 +1470,53 @@
                 "source": "https://github.com/Intervention/image/tree/master"
             },
             "time": "2019-11-02T09:15:47+00:00"
+        },
+        {
+            "name": "kriswallsmith/assetic",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kriswallsmith/assetic.git",
+                "reference": "8ab3638325af9cd144242765494a9dc9b53ab430"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/8ab3638325af9cd144242765494a9dc9b53ab430",
+                "reference": "8ab3638325af9cd144242765494a9dc9b53ab430",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Assetic": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Asset Management for PHP",
+            "homepage": "https://github.com/kriswallsmith/assetic",
+            "keywords": [
+                "assets",
+                "compression",
+                "minification"
+            ],
+            "support": {
+                "issues": "https://github.com/kriswallsmith/assetic/issues",
+                "source": "https://github.com/kriswallsmith/assetic/tree/1.0.x"
+            },
+            "time": "2014-12-12T05:07:58+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3084,6 +3186,55 @@
                 "wiki": "https://github.com/ramsey/uuid/wiki"
             },
             "time": "2020-02-21T04:36:14+00:00"
+        },
+        {
+            "name": "robloach/component-installer",
+            "version": "0.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RobLoach/component-installer.git",
+                "reference": "1864f25db21fc173e02a359f646acd596c1b0460"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RobLoach/component-installer/zipball/1864f25db21fc173e02a359f646acd596c1b0460",
+                "reference": "1864f25db21fc173e02a359f646acd596c1b0460",
+                "shasum": ""
+            },
+            "require": {
+                "kriswallsmith/assetic": "1.*",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "composer/composer": "1.*"
+            },
+            "type": "composer-installer",
+            "extra": {
+                "class": "ComponentInstaller\\Installer"
+            },
+            "autoload": {
+                "psr-0": {
+                    "ComponentInstaller": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Loach",
+                    "email": "robloach@gmail.com",
+                    "homepage": "http://robloach.net"
+                }
+            ],
+            "description": "Allows installation of Components via Composer.",
+            "support": {
+                "issues": "https://github.com/RobLoach/component-installer/issues",
+                "source": "https://github.com/RobLoach/component-installer/tree/master"
+            },
+            "abandoned": "oomphinc/composer-installers-extender",
+            "time": "2013-08-31T23:46:48+00:00"
         },
         {
             "name": "sendgrid/php-http-client",

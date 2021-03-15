@@ -4,7 +4,7 @@
     <table class="table details-table" id="car_{{id}}">
         <thead>
         <tr class="">
-            <th>User</th>
+            <th>Client</th>
             <th>Date From</th>
             <th>Date To</th>
             <th>Total</th>
@@ -15,10 +15,14 @@
 </script>
 
 <script>
+    // const Handlebars = require("handlebars");
 
-    // let template = Handlebars.compile($("#details-template").html());
+{{--    @include("handlebars")--}}
+
+    let template = Handlebars.compile($("#details-template").html());
 
     let dataTableInstance = null;
+
     let Car = function () {
 
         let ajaxParams = {};
@@ -45,7 +49,8 @@
                     },
                 },
                 drawCallback: function (oSettings) { // run some code on table redraw
-
+                    let api = this.api();
+                    api.columns([5]).visible(false);
                     displaySpinner(false);
                 },
                 initComplete: function(settings, json){
@@ -53,25 +58,27 @@
                 },
                 columnDefs: [
                     {
-                        targets:[2],
+                        targets:[1],
                         createdCell: function (td, cellData, rowData, row, col) {
-                            console.log(cellData);
-                            $(td).html('<img src="'+cellData+'" height="30">');
-
-                            // switch(cellData["contact_status_id"] )
-                            // {
-                            //     case 0:
-                            //     case 2:
-                            //     case 3:
-                            //         $(td).addClass('startcontact-control');
-                            //         $(td).html('<a href="#"><i class="fa fa-phone" title="Iniciar Contacto" style="color:green;"></i></a>');
-                            //         break;
-                            //     default:
-                            //         $(td).html('<i class="fa fa-tty" title="Contacto concluído" style="color:red;"></i>');
-                            //         break;
-                            // }
+                            switch(rowData["rented"] )
+                            {
+                                case 0:
+                                    $(td).addClass('startrentcontrol');
+                                    $(td).html('<a href="#"><i class="fas fa-car" title="Marcar Aluguer" style="color:green;"></i></a>');
+                                    break;
+                                case 1:
+                                    $(td).html('<i class="fas fa-car" title="Alugado" style="color:red;"></i>');
+                                    break;
+                            }
                         }
                     },
+                    {
+                        targets:[2],
+                        createdCell: function (td, cellData, rowData, row, col) {
+                            $(td).html('<span style="align-content: center"><img src="'+cellData+'" height="30"></span>');
+                        }
+                    },
+                    { targets: 4, "width": "10%", render: $.fn.dataTable.render.number(' ',',', 2 , '',' €') },
                 ],
                 fnRowCallback: function(nRow , aData, iDisplayIndex, iDisplayIndexFull ) {
 
@@ -81,26 +88,12 @@
                 columns: [
                     {data: null, className: 'details-control', orderable: false, defaultContent: '', searchable: false, width: '1%'},
                     {data: 'action', className: 'create-rent', orderable: false, searchable: false, width: '1%'},
-                    {data: 'brand', name: 'brands.title', title: 'Brand', className:'input-sm text-nowrap', width: '8%'},
+                    {data: 'brand', name: 'brands.title', title: 'Brand', className:'input-sm text-nowrap', width: '5%'},
                     {data: 'plate', name: 'plate', title: 'Plate', className:'text-center', width: '8%'},
                     {data: 'daily_price', name: 'daily_price', title: 'Daily price', className:'text-right text-nowrap',width: '5%'},
+                    {data: 'rented', name: 'rented', title: 'Estado', className:'text-right text-nowrap',width: '5%'},
 
                 ],
-                language: {
-                    thousands: ".",
-                    lengthMenu: "Mostrar _MENU_ registos",
-                    zeroRecords: "Sem resultados",
-                    info: "_PAGE_ de _PAGES_ Pág ( _TOTAL_ Reg )",
-                    infoEmpty: "Sem registos",
-                    infoFiltered: "(num total de _MAX_)",
-                    search: '<i class="fa fa-search"></i>',
-                    paginate: {
-                        first: "Primeira",
-                        last: "Última",
-                        next: ">",
-                        previous: "<"
-                    },
-                },
                 buttons: [
                 ],
                 scrollX: "100%",
@@ -191,6 +184,7 @@
     });
 
     function initTable(tableId, data) {
+        console.log(tableId,data);
         $('#' + tableId).DataTable({
             sDom: 't',
             bFilter: false,
@@ -205,7 +199,7 @@
 
             ],
             columns: [
-                { data: 'user', name: 'users.name', title: 'Cliente', width: '10%'},
+                { data: 'client', name: 'users.id', title: 'Client', width: '10%'},
                 { data: 'date_from', name: 'date_from', title: 'Date from', width: '10%'},
                 { data: 'date_to', name: 'date_to', title: 'Date to', width: '10%'},
                 { data: 'total_cost', name: 'total_cost', title: 'Total cost', width: '50%'}

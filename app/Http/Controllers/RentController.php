@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Rent;
 use Illuminate\Http\Request;
+use App\Repository\RentsRepository;
 
 class RentController extends Controller
 {
@@ -19,6 +20,19 @@ class RentController extends Controller
         $rents = Rent::all();
 
         return view('rents.index', compact('rents'));
+    }
+
+    /**
+     * Searches for the requested resource.
+     *
+     * @param Request $request
+     * @param RentsRepository $repository
+     * @return mixed
+     * @throws \Exception
+     */
+    public function search(Request $request, RentsRepository $repository)
+    {
+        return $repository->search($request);
     }
 
     /**

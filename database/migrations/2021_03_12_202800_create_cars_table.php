@@ -18,6 +18,7 @@ class CreateCarsTable extends Migration
             $table->smallInteger('brand_id');
             $table->string('plate',10);
             $table->decimal('daily_price',6,2);
+            $table->boolean('rented')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -19,6 +19,7 @@ class Car extends Model
         'brand_id',
         'plate',
         'dailyprice',
+        'rented',
         'created_at',
         'updated_at',
         'deleted_at',

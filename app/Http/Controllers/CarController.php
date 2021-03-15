@@ -31,7 +31,7 @@ class CarController extends Controller
      * Searches for the requested resource.
      *
      * @param Request $request
-     * @param InsurancesLogsRepository $repository
+     * @param CarsRepository $repository
      * @return mixed
      * @throws \Exception
      */

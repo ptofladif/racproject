@@ -36,6 +36,7 @@ class CarsRepository
                 'cars.plate',
                 'cars.daily_price',
                 'cars.brand_id',
+                'cars.rented'
             ])
         ;
 
@@ -47,10 +48,7 @@ class CarsRepository
                 return '<a href="#" id="car-id-'.$car->id.'"> <i class="fas fa-car" style="color:green;" title="Alugar"></i></a>';
             })
             ->editColumn('brand', function (Car $car) {
-
-//                return $car->brand->icon;
-
-                return asset('public/img/brands/'.$car->brand->icon);
+                return asset('img/brands/'.$car->brand->icon);
             })
             ->make()
             ;
