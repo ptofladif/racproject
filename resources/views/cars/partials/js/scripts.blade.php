@@ -173,14 +173,14 @@
 
             let row = dataTableInstance.row(tr).data();
 
-            let route = '{!! route('rents.create') !!}';
+            if(row.rented===0){
+                let route = '{!! route('rents.create') !!}';
 
-            route = route + '?id=' + row['id'];
-console.log(route);
-            $('#modal-rent-create').load(route, function (result) {
-                console.log(result);
-                $('#create-rent-modal').modal('show');
-            })
+                route = route + '?id=' + row['id'];
+                $('#modal-rent-create').load(route, function (result) {
+                    $('#create-rent-modal').modal('show');
+                })
+            }
 
         });
 
@@ -188,7 +188,6 @@ console.log(route);
     });
 
     function initTable(tableId, data) {
-        console.log(tableId,data);
         $('#' + tableId).DataTable({
             sDom: 't',
             bFilter: false,

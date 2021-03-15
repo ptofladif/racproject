@@ -38,8 +38,6 @@
                 },
                 columnDefs: [
 
-                    // {
-                    //     targets: 11, "width": "10%", render: $.fn.dataTable.render.number(' ',',', 2 , '',' €') },
                 ],
                 fnRowCallback: function(nRow , aData, iDisplayIndex, iDisplayIndexFull ) {
 
@@ -53,7 +51,6 @@
                     {data: 'date_from', name: 'date_from', title: 'Date From', className:'text-center', width: '8%'},
                     {data: 'date_to', name: 'date_to', title: 'Date To', className:'input-sm text-nowrap', width: '8%'},
                     {data: 'total_cost', name: 'total_cost', title: 'Total Cost', className:'text-right text-nowrap',width: '5%'},
-
                 ],
                 language: {
                     thousands: ".",

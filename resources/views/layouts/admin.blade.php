@@ -52,10 +52,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    <!-- Custom -->
-    <script src="{{ asset('/js/custom.js') }}" type="text/javascript"></script>
     <script>
-        $(function() {
+$(function() {
   let copyButtonTrans = '{{ trans('global.datatables.copy') }}'
   let csvButtonTrans = '{{ trans('global.datatables.csv') }}'
   let excelButtonTrans = '{{ trans('global.datatables.excel') }}'

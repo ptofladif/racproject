@@ -28,8 +28,8 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="control-label input-sm">Date From</label>
-                            <div class="input-group">
+                            <label>Schedule Date From</label>
+                            <div class="input-group date">
                                 <div class="input-group-addon">
 
                                 </div>
@@ -39,12 +39,12 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="control-label input-sm">Date To</label>
-                            <div class="input-group">
+                            <label>Schedule Date To</label>
+                            <div class="input-group date">
                                 <div class="input-group-addon">
 
                                 </div>
-                                {!! Form::input('text', 'date_to', '', ['id'=>'datetoId','class' => 'form-control input-sm','autocomplete'=>'off']) !!}
+                                {!! Form::input('text', 'date_to', old('date_to') , ['id'=>'datetoId','class' => 'form-control input-sm','autocomplete'=>'off','data-validation'=>'required','data-validation-error-msg-required'=>'Campo obrigatório']) !!}
                             </div>
                         </div>
                     </div>
@@ -59,3 +59,18 @@
     </div>
 </div>
 {!! Form::close() !!}
+
+<script>
+    // $(document).ready(function() {
+    //     // datepicker
+    //     $('.date').datepicker({
+    //     });
+    //
+    //     // timepicker
+    //     $('.timepickerinput').timepicker({
+    //         minuteStep: 5,
+    //         showMeridian: false,
+    //         defaultTime: false
+    //     });
+    // });
+</script>
