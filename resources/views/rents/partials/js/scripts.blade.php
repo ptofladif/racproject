@@ -1,7 +1,7 @@
 
 <script>
 
-    let dataTableInstance = null;
+    let dataTableRentInstance = null;
 
     let Rent = function () {
 
@@ -15,7 +15,7 @@
 
         let handleSearch = function () {
 
-            dataTableInstance = $('#rentstable').DataTable({
+            dataTableRentInstance = $('#rentstable').DataTable({
                 autoWidth: false,
                 processing: false,
                 serverSide: true,
@@ -74,9 +74,11 @@
                 setAjaxParam($(this).attr("name"), $(this).val());
             });
 
-            dataTableInstance.ajax.reload();
+            dataTableRentInstance.ajax.reload();
         };
-
+        let handleCloseCreate = function () {
+            $('#create-rent-modal').modal('hide');
+        };
         let handleResetSearchFilters = function () {
             $('select.form-filter, input.form-filter').each(function () {
                 $(this).val("");
@@ -100,13 +102,16 @@
             resetSearchFilters: function () {
                 handleResetSearchFilters();
             },
+            closeCreate: function () {
+                handleCloseCreate();
+            },
         }
     }();
 
     $(document).ready(function () {
 
         Rent.initSearch();
-        
+
 
         $("#carstable tbody").on("click", "td.edit-rent", function(){
 

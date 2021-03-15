@@ -31,11 +31,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 Route::resource('cars', 'CarController');
 
 Route::group(['prefix' => 'Cars', 'as' => 'cars.'], function () {
-//    Route::get('index', ['as' => 'index', 'uses' => 'CarController@index']);
     Route::get('search', ['as' => 'search', 'uses' => 'CarController@search']);
 });
 
 Route::resource('rents', 'RentController');
+
+Route::group(['prefix' => 'Rents', 'as' => 'rents.'], function () {
+    Route::get('search', ['as' => 'search', 'uses' => 'RentController@search']);
+});
 
 //Route::group(['prefix' => 'Rents', 'as' => 'rents.'], function () {
 //    Route::get('index', ['as' => 'index', 'uses' => 'RentController@index']);

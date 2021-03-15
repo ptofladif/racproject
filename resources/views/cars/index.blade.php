@@ -14,4 +14,5 @@
 @section('scripts')
 @parent
     @include('cars.partials.js.scripts')
+    @include('rents.partials.js.scripts')
 @endsection

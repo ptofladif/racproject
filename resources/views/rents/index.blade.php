@@ -7,6 +7,5 @@
 @endsection
 
 @section('scriptOnPage')
-    @include('cars.partials.js.scripts')
-{{--    @include('stkCarLeads.partials.js.scripts')--}}
+    @include('rents.partials.js.scripts')
 @endsection
