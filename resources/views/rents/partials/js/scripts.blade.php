@@ -45,9 +45,11 @@
                 order: [
                 ],
                 columns: [
-                    {data: 'action', className: 'edit-lead', orderable: false, searchable: false, width: '1%'},
-                    {data: 'users.name', name: 'user', title: 'Client', className:'text-center', width: '8%'},
-                    {data: 'cars.plate', name: 'car', title: 'Car', className:'text-center', width: '8%'},
+                    {data: 'actions', className: 'edit-rent', orderable: false, searchable: false, width: '1%'},
+                    {data: 'client', name: 'user.name', title: 'Client', className:'text-center', width: '8%'},
+                    {data: 'plate', name: 'car.plate', title: 'Plate', className:'text-center', width: '8%'},
+                    {data: 'schedule_from', name: 'schedule_from', title: 'Schedule From', className:'text-center', width: '8%'},
+                    {data: 'schedule_to', name: 'schedule_to', title: 'Schedule To', className:'input-sm text-nowrap', width: '8%'},
                     {data: 'date_from', name: 'date_from', title: 'Date From', className:'text-center', width: '8%'},
                     {data: 'date_to', name: 'date_to', title: 'Date To', className:'input-sm text-nowrap', width: '8%'},
                     {data: 'total_cost', name: 'total_cost', title: 'Total Cost', className:'text-right text-nowrap',width: '5%'},
@@ -76,6 +78,9 @@
         let handleCloseCreate = function () {
             $('#create-rent-modal').modal('hide');
         };
+        let handleCloseEdit = function () {
+            $('#edit-rent-modal').modal('hide');
+        };
         let handleResetSearchFilters = function () {
             $('select.form-filter, input.form-filter').each(function () {
                 $(this).val("");
@@ -102,6 +107,9 @@
             closeCreate: function () {
                 handleCloseCreate();
             },
+            closeEdit: function () {
+                handleCloseEdit();
+            },
         }
     }();
 
@@ -109,20 +117,22 @@
 
         Rent.initSearch();
 
+        $("#rentstable tbody").on("click", "td.edit-rent", function(){
 
-        $("#carstable tbody").on("click", "td.edit-rent", function(){
+            let tr = $(this).closest('tr');
 
-            {{--let tr = $(this).closest('tr');--}}
-
-            {{--let row = dataTableInstance.row(tr).data();--}}
-
+            let row = dataTableRentInstance.row(tr).data();
+            console.log(row);
+            let route  = '{!! route('rents.edit',[':idRent']) !!}';
+            route = route.replace(':idRent',row['id']);
+            console.log(route);
             {{--let route = '{!! route('rents.edit') !!}';--}}
 
             {{--route = route + '?id=' + row['id'];--}}
 
-            {{--$('#modal-lead-create').load(route, function (result) {--}}
-            {{--    $('#create-lead-modal').modal('show');--}}
-            {{--})--}}
+            $('#modal-rent-edit').load(route, function (result) {
+                $('#edit-rent-modal').modal('show');
+            })
         });
 
     });

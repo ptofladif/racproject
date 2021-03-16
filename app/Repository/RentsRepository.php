@@ -7,6 +7,7 @@ use App\Brand;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -37,11 +38,21 @@ class RentsRepository
                 'rents.car_id',
                 'rents.date_from',
                 'rents.date_to',
+                'rents.schedule_from',
+                'rents.schedule_to',
                 'rents.total_cost',
             ])
         ;
 
         return DataTables::of($Rents)
+            ->editColumn('actions', function (Rent $rent) {
+                return View::make('rents.partials.table-row-actions')
+                    ->with('rent', $rent)
+                    ;
+            })
+            ->editColumn('plate', function(Rent $rent) {
+                return $rent->car->plate;
+            })
             ->editColumn('client', function(Rent $rent) {
                 return $rent->user->name;
             })

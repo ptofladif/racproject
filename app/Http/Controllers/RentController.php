@@ -48,11 +48,7 @@ class RentController extends Controller
             ->where('id',$request->id)
             ->first();
 
-        $viewModel=[
-            'model'=>$model,
-        ];
-
-        return view('rents.create',$viewModel);
+        return view('rents.create',['model'=>$model]);
     }
 
     /**
@@ -93,7 +89,11 @@ class RentController extends Controller
     {
         abort_unless(\Gate::allows('rent_edit'), 403);
 
-        return view('rents.edit', compact('rent'));
+        $model = Car::with('brand')
+            ->where('id',$rent->car->id)
+            ->first();
+
+        return view('rents.edit', ['model'=>$model]);
     }
 
     /**

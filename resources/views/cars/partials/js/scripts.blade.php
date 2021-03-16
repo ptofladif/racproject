@@ -181,7 +181,6 @@
                     $('#create-rent-modal').modal('show');
                 })
             }
-
         });
 
 

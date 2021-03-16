@@ -41,12 +41,12 @@ class CarsRepository
         ;
 
         return DataTables::of($Cars)
-            ->addColumn('details_url', function(Car $car) {
+            ->editColumn('details_url', function(Car $car) {
                 return route('api.master_rent_details', $car->id);
             })
-            ->addColumn('action', function (Car $car) {
-                return '<a href="#" id="car-id-'.$car->id.'"> <i class="fas fa-car" style="color:green;" title="Alugar"></i></a>';
-            })
+//            ->editColumn('action', function (Car $car) {
+//                return '<a href="#" id="car-id-'.$car->id.'"> <i class="fas fa-car" style="color:green;" title="Alugar"></i></a>';
+//            })
             ->editColumn('brand', function (Car $car) {
                 return asset('img/brands/'.$car->brand->icon);
             })
