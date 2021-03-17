@@ -11,10 +11,11 @@ class Create1555355612782UsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('phone');
             $table->string('email');
             $table->datetime('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('remember_token')->nullable();
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

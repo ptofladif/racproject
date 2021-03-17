@@ -35,4 +35,6 @@ class UsersApiController extends Controller
     {
         return $user->delete();
     }
+
+
 }
