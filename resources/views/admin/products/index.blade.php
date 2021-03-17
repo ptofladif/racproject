@@ -1,17 +1,22 @@
 @extends('layouts.admin')
 @section('main-content')
 @can('product_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.products.create") }}">
-                {{ trans('global.add') }} {{ trans('global.product.title_singular') }}
-            </a>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <a class="btn btn-success" href="{{ route("admin.products.create") }}">
+                        {{ trans('global.add') }} {{ trans('global.product.title_singular') }}
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
         {{ trans('global.product.title_singular') }} {{ trans('global.list') }}
+
     </div>
 
     <div class="card-body">

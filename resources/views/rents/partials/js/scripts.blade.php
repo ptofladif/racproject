@@ -57,8 +57,6 @@
                 language: {
                     thousands: ".",
                 },
-                buttons: [
-                ],
                 scrollX: "100%",
                 scrollXInner: "100%",
                 scrollCollapse: false,
