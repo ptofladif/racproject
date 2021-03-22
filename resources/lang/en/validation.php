@@ -106,7 +106,7 @@ return [
         ],
     ],
     'attributes'           => [],
-    'site_title'           => 'Laravel + AdminLTE3',
+    'site_title'           => 'RAC',
     'userManagement'       => [
         'title'          => 'User Management',
         'title_singular' => 'User Management',
@@ -171,5 +171,8 @@ return [
             'deleted_at'               => 'Deleted at',
             'deleted_at_helper'        => '',
         ],
+    ],
+    'nifextension'           => [
+        'The :attribute is invalid.'
     ],
 ];

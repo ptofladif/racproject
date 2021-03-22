@@ -36,12 +36,12 @@ class UsersController extends Controller
      */
     public function register(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'phone' => 'required|unique:users|regex:/9[1236]\d{7}/',
             'email' => 'required|email|unique:users',
             'password' => 'required',
+            'nif' => 'required|nifextension',
         ]);
 
         if ($validator->fails()) {
