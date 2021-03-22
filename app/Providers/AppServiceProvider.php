@@ -33,12 +33,13 @@ class AppServiceProvider extends ServiceProvider
          * log the SQL queryes for debuging
          */
         if(config('env.APP_DEBUG')) {
-         DB::listen(function($query) {
-             File::append(
-                 storage_path('/logs/query.log'),
-                 $query->sql . ' [' . implode(', ', $query->bindings) . ']' . PHP_EOL
-            );
-         });
+            DB::listen(function($query) {
+                File::append(
+                    storage_path('/logs/query.log'),
+                    $query->sql.
+                        print_r($query->bindings,1). PHP_EOL
+                );
+            });
         }
 
         Validator::extend('nifextension', function($attribute, $value, $parameters, $validator) {
