@@ -41,7 +41,7 @@ class UsersController extends Controller
             'phone' => 'required|unique:users|regex:/9[1236]\d{7}/',
             'email' => 'required|email|unique:users',
             'password' => 'required',
-            'nif' => 'required|nifextension',
+            'nif' => 'required|unique:users|nifextension',
         ]);
 
         if ($validator->fails()) {
