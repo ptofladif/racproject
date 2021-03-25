@@ -16,22 +16,21 @@ Route::group(['prefix' => 'v1', 'as' => 'admin.', 'namespace' => 'Api\V1'], func
 
 });
 
-
-
-
-Route::group(['prefix' => 'v1', 'as' => 'v1', 'namespace' => 'Api\V1'], function () {
+Route::group(['prefix' => 'v1', 'as' => 'client.', 'namespace' => 'Api\V1'], function () {
 
     Route::post('/register', 'UsersController@register');
+
     Route::post('/login', 'UsersController@login');
 
     Route::group(['middleware' =>['auth:api']], function () {
+
         Route::get('/logout', 'UsersController@logout');
 
         Route::get('/cars', 'CarsApiController@index');
 
         Route::get('/rents', 'RentsApiController@index');
 
-        Route::get('/me/rents', 'RentsApiController@merents');
+        Route::get('/my/rents', 'RentsApiController@myrents');
 
         Route::post('/rent', 'RentsApiController@store');
 
@@ -40,11 +39,7 @@ Route::group(['prefix' => 'v1', 'as' => 'v1', 'namespace' => 'Api\V1'], function
 
 
 
-//Route::group(['prefix' => 'v1'], function () {
-//    Route::post('/login', 'UsersController@login');
-//    Route::post('/register', 'UsersController@register');
-//    Route::get('/logout', 'UsersController@logout')->middleware('auth:api');
-//});
+
 
 
 Route::get('/master_rent_details/{carId}', 'RentController@search')->name('api.master_rent_details');

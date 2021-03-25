@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Car;
+use Illuminate\Support\Facades\Response;
 
 
 class CarsApiController extends Controller
@@ -12,6 +13,10 @@ class CarsApiController extends Controller
     {
         $cars = Car::where('rented',0)->get();
 
-        return $cars;
+        if(empty($cars->count())){
+            return Response::json(array('message' => 'No cars available','status'=> 422));
+        }else{
+            return $cars;
+        }
     }
 }

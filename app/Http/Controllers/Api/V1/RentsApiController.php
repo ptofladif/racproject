@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Rent;
-use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Car;
@@ -18,7 +17,7 @@ class RentsApiController extends Controller
         return $rents;
     }
 
-    public function merents(){
+    public function myrents(){
 
         $rents = Rent::where('user_id',Auth::user()->id)->get();
 
@@ -38,15 +37,15 @@ class RentsApiController extends Controller
                 $newrent = Rent::create($request->all());
 
                 if($newrent){
-                    Car::where('id',$request->car_id)->update(['rented'=>1]);
+                    Car::where('id',$request->car_id)->update(['rented' => 1]);
                 }
                 return $newrent;
             }
 
-            return Response::json(array('message' => 'Carro já está alugado', 422));
+            return Response::json(array('message' => 'This car is already rented', 'status' => 422));
 
         } catch (Exception $err) {
-            return Response::json(array('message' => $err, 422));
+            return Response::json(array('message' => $err, 'status' => 422));
         }
 
     }
