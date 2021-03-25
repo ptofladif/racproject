@@ -18,9 +18,7 @@ class RentsApiController extends Controller
     }
 
     public function myrents(){
-
         $rents = Rent::where('user_id',Auth::user()->id)->get();
-
         return $rents;
     }
 
@@ -37,8 +35,9 @@ class RentsApiController extends Controller
                 $newrent = Rent::create($request->all());
 
                 if($newrent){
-                    Car::where('id',$request->car_id)->update(['rented' => 1]);
+                    $car = Car::where('id',$request->car_id)->update(['rented' => 1]);
                 }
+
                 return $newrent;
             }
 
