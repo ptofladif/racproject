@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Car;
+use App\Models\Car;
 use Illuminate\Support\Facades\Response;
 
 

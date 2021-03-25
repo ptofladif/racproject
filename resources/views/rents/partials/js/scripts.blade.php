@@ -19,6 +19,7 @@
                 autoWidth: false,
                 processing: false,
                 serverSide: true,
+                select: false,
                 ajax: {
                     url: '{!! route('rents.search') !!}',
                     data: function (data) {

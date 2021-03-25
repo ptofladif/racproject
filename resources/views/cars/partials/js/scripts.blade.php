@@ -39,6 +39,7 @@
                 autoWidth: false,
                 processing: false,
                 serverSide: true,
+                select: false,
                 ajax: {
                     url: '{!! route('cars.search') !!}',
                     data: function (data) {
@@ -199,7 +200,7 @@
 
             ],
             columns: [
-                { data: 'client', name: 'users.id', title: 'Client', width: '10%'},
+                { data: 'client', name: 'users.name', title: 'Client', width: '10%'},
                 { data: 'date_from', name: 'date_from', title: 'Date from', width: '10%'},
                 { data: 'date_to', name: 'date_to', title: 'Date to', width: '10%'},
                 { data: 'total_cost', name: 'total_cost', title: 'Total cost', width: '50%'}

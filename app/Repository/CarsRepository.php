@@ -29,8 +29,8 @@ class CarsRepository
 
         $this->handleFilters($CarsQuery, $request);
 
-        $Cars = $CarsQuery->with('brand')
-//            ->leftJoin('brands', 'cars.brand_id', '=', 'brands.id')
+        $Cars = $CarsQuery
+            ->leftJoin('brands', 'cars.brand_id', '=', 'brands.id')
             ->select([
                 'cars.id',
                 'cars.plate',

@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Car extends Model
+class Permission extends Model
 {
     use SoftDeletes;
 
@@ -16,20 +16,9 @@ class Car extends Model
     ];
 
     protected $fillable = [
-        'brand_id',
-        'plate',
-        'dailyprice',
-        'rented',
+        'title',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
-
-    /**
-     * The brand relation
-     */
-    public function brand()
-    {
-        return $this->hasOne('App\Brand', 'id','brand_id');
-    }
 }

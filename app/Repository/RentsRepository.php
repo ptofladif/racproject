@@ -31,7 +31,7 @@ class RentsRepository
         $this->handleFilters($RentsQuery, $request);
 
         $Rents = $RentsQuery->with('user','car')
-//            ->leftJoin('brands', 'cars.brand_id', '=', 'brands.id')
+            ->leftJoin('users', 'rents.user_id', '=', 'users.id')
             ->select([
                 'rents.id',
                 'rents.user_id',

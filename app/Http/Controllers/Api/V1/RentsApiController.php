@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Rent;
+use App\Models\Rent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Car;
+use App\Models\Car;
 use Illuminate\Support\Facades\Response;
 
 class RentsApiController extends Controller
