@@ -2,8 +2,8 @@
 
 namespace App\Repository;
 
-use App\Rent;
-use App\Brand;
+use App\Models\Rent;
+use App\Models\Brand;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;

@@ -27,8 +27,8 @@ Route::group(['prefix' => 'v1', 'as' => 'client.', 'namespace' => 'Api\V1'], fun
         Route::get('/logout', 'UsersController@logout');
 
         Route::group(['prefix' => 'cars'], function () {
-            Route::get('/{status?}', 'CarsApiController@index');
-            Route::get('/{id_car}', 'CarsApiController@search');
+            Route::get('/index', 'CarsApiController@index');
+            Route::get('/search', 'CarsApiController@search');
         });
 
         Route::get('/rents', 'RentsApiController@index');

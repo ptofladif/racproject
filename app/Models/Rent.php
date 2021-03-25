@@ -30,13 +30,13 @@ class Rent extends Model
      */
     public function user()
     {
-        return $this->hasOne('App\User', 'id','user_id');
+        return $this->hasOne('App\Models\User', 'id','user_id');
     }
     /**
      * The car relation
      */
     public function car()
     {
-        return $this->hasOne('App\Car', 'id','car_id');
+        return $this->hasOne('App\Models\Car', 'id','car_id');
     }
 }

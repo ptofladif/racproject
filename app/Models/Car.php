@@ -30,6 +30,6 @@ class Car extends Model
      */
     public function brand()
     {
-        return $this->hasOne('App\Brand', 'id','brand_id');
+        return $this->hasOne('App\Models\Brand', 'id','brand_id');
     }
 }

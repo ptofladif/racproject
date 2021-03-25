@@ -2,11 +2,12 @@
 
 namespace App\Repository;
 
-use App\Car;
-use App\Brand;
+use App\Models\Car;
+use App\Models\Brand;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -25,6 +26,7 @@ class CarsRepository
      * @throws \Exception
      */
     public function search(Request $request) {
+
         $CarsQuery = Car::query();
 
         $this->handleFilters($CarsQuery, $request);
@@ -39,6 +41,10 @@ class CarsRepository
                 'cars.rented'
             ])
         ;
+
+        if($request->api){
+            return Response::json($Cars->get());
+        }
 
         return DataTables::of($Cars)
             ->editColumn('details_url', function(Car $car) {
@@ -61,11 +67,13 @@ class CarsRepository
      * @param Request $request
      */
     protected function handleFilters(Builder $query, Request $request) {
+
         $query
-            ->when($brandId = $request->brandId, function ($q) use ($brandId) {
-                $q->whereHas('brand', function ($q2) use($brandId) {
-                    return $q2->where('id',$brandId);
-                });
+            ->when($id = $request->id, function ($q) use ($id) {
+                $q->where('id',$id);
+            })
+            ->when( is_numeric($request->rented) , function ($q) use ($request) {
+                $q->where('rented',$request->rented);
             })
             ->when($plate = $request->plate, function ($q) use ($plate) {
                 $q->where('plate','like','%'.$plate.'%');
@@ -75,6 +83,11 @@ class CarsRepository
             })
             ->when($maxvalue = $request->maxvalue, function ($q) use ($maxvalue) {
                 $q->where('daily_price','<=',$maxvalue);
+            })
+            ->when($brandId = $request->brandId, function ($q) use ($brandId) {
+                $q->whereHas('brand', function ($q2) use($brandId) {
+                    return $q2->where('id',$brandId);
+                });
             })
             ;
     }
