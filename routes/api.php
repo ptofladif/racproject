@@ -31,11 +31,10 @@ Route::group(['prefix' => 'v1', 'as' => 'client.', 'namespace' => 'Api\V1'], fun
             Route::get('/search', 'CarsApiController@search');
         });
 
-        Route::get('/rents', 'RentsApiController@index');
-
-        Route::get('/my/rents', 'RentsApiController@myrents');
-
-        Route::post('/rent', 'RentsApiController@store');
+        Route::group(['prefix' => 'rents'], function () {
+            Route::get('/search', 'RentsApiController@search');
+            Route::post('/store', 'RentsApiController@store');
+        });
 
     });
 });

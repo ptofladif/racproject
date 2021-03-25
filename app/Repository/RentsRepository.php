@@ -7,6 +7,7 @@ use App\Models\Brand;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Log;
@@ -26,6 +27,8 @@ class RentsRepository
      * @throws \Exception
      */
     public function search(Request $request) {
+
+
         $RentsQuery = Rent::query();
 
         $this->handleFilters($RentsQuery, $request);
@@ -41,7 +44,9 @@ class RentsRepository
                 'rents.total_cost',
             ])
         ;
-
+        if($request->api){
+            return Response::json($Rents->get());
+        }
         return DataTables::of($Rents)
             ->editColumn('actions', function (Rent $rent) {
                 return View::make('rents.partials.table-row-actions')
@@ -77,9 +82,9 @@ class RentsRepository
                     return $q2->where('id',$carId);
                 });
             })
-//            ->when($plate = $request->plate, function ($q) use ($plate) {
-//                $q->where('plate','like','%'.$plate.'%');
-//            })
+            ->when($user_id = $request->user_id, function ($q) use ($user_id) {
+                $q->where('user_id',$user_id);
+            })
 //            ->when($minvalue = $request->minvalue, function ($q) use ($minvalue) {
 //                $q->where('daily_price','>=',$minvalue);
 //            })
