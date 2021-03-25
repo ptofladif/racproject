@@ -38,8 +38,6 @@ class RentsRepository
                 'rents.car_id',
                 'rents.date_from',
                 'rents.date_to',
-                'rents.schedule_from',
-                'rents.schedule_to',
                 'rents.total_cost',
             ])
         ;

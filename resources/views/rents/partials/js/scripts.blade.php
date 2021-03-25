@@ -48,8 +48,6 @@
                     {data: 'actions', className: 'edit-rent', orderable: false, searchable: false, width: '1%'},
                     {data: 'client', name: 'user.name', title: 'Client', className:'text-center', width: '8%'},
                     {data: 'plate', name: 'car.plate', title: 'Plate', className:'text-center', width: '8%'},
-                    {data: 'schedule_from', name: 'schedule_from', title: 'Schedule From', className:'text-center', width: '8%'},
-                    {data: 'schedule_to', name: 'schedule_to', title: 'Schedule To', className:'input-sm text-nowrap', width: '8%'},
                     {data: 'date_from', name: 'date_from', title: 'Date From', className:'text-center', width: '8%'},
                     {data: 'date_to', name: 'date_to', title: 'Date To', className:'input-sm text-nowrap', width: '8%'},
                     {data: 'total_cost', name: 'total_cost', title: 'Total Cost', className:'text-right text-nowrap',width: '5%'},

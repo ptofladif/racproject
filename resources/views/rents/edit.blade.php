@@ -28,7 +28,7 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Schedule Date From</label>
+                            <label>Date From</label>
                             <div class="input-group date">
                                 <div class="input-group-addon">
 
@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Schedule Date To</label>
+                            <label>Date To</label>
                             <div class="input-group date">
                                 <div class="input-group-addon">
 

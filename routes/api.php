@@ -1,20 +1,20 @@
 <?php
 
-Route::group(['prefix' => 'v1', 'as' => 'admin.', 'namespace' => 'Api\V1'], function () {
-
-    Route::apiResource('permissions', 'PermissionsApiController');
-
-    Route::apiResource('roles', 'RolesApiController');
-
-    Route::apiResource('users', 'UsersApiController');
-
-    Route::apiResource('products', 'ProductsApiController');
-
-    Route::apiResource('cars', 'CarsApiController');
-
-    Route::apiResource('rents', 'RentsApiController');
-
-});
+//Route::group(['prefix' => 'v1', 'as' => 'admin.', 'namespace' => 'Api\V1'], function () {
+//
+//    Route::apiResource('permissions', 'PermissionsApiController');
+//
+//    Route::apiResource('roles', 'RolesApiController');
+//
+//    Route::apiResource('users', 'UsersApiController');
+//
+//    Route::apiResource('products', 'ProductsApiController');
+//
+//    Route::apiResource('cars', 'CarsApiController');
+//
+//    Route::apiResource('rents', 'RentsApiController');
+//
+//});
 
 Route::group(['prefix' => 'v1', 'as' => 'client.', 'namespace' => 'Api\V1'], function () {
 
