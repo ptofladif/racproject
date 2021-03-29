@@ -46,7 +46,7 @@ class CarsTableSeeder extends Seeder
                 "updated_at" => now(),
             ),
             array(
-                "brand_id" => "68",
+                "brand_id" => "33",
                 "plate" => "82-ZU-97",
                 "daily_price" => 50,
                 "rented" => 0,
@@ -70,7 +70,7 @@ class CarsTableSeeder extends Seeder
                 "updated_at" => now(),
             ),
             array(
-                "brand_id" => "95",
+                "brand_id" => "32",
                 "plate" => "AA99DR",
                 "daily_price" => 50,
                 "rented" => 0,

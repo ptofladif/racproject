@@ -270,6 +270,14 @@ class BrandSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'id' => '33',
+                'title'=>'DACIA',
+                'name'=>'DA',
+                'icon'=>'dacia.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         Brand::insert($brands);
