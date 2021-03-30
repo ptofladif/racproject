@@ -72,3 +72,6 @@ tr.shown td.details-control {
     padding: 5px;
 }
 
+.hidden {
+    display: none !important;
+}

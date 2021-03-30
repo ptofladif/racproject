@@ -8,6 +8,8 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class UsersController extends Controller
 {
@@ -83,5 +85,19 @@ class UsersController extends Controller
         User::whereIn('id', request('ids'))->delete();
 
         return response(null, 204);
+    }
+
+    public function searchClientByAjax(Request $request){
+
+        $searchUser = User::
+            select('id','name')
+            ->where('username', 'like', '%'.$request->name.'%')
+            ->orWhere('name', 'like', '%'.$request->name.'%')
+            ->clients()
+            ->get();
+
+        dd($searchUser);
+
+        return Response::json($searchUser);
     }
 }

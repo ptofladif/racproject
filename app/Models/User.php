@@ -65,4 +65,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+    public function scopeClients($query)
+    {
+        return $query->with('roles')
+            ->where(function ($q) {
+                $q->where('roles.id', 3)
+                    ;
+            });
+    }
+
 }

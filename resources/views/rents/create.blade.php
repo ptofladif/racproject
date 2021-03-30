@@ -11,40 +11,49 @@
             <div class="modal-body">
                 <div class="card-body">
                     {{ Form::hidden('id', $model->id , array('id' => 'id')) }}
-                    @if(!empty($model->plate))
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="control-label input-sm">Plate</label>
-                                {!! Form::input('text', 'plate', $model->plate, ['class' => 'form-control input-sm','readonly']) !!}
-                            </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label input-sm">Plate</label>
+                            {!! Form::input('text', 'plate', $model->plate, ['class' => 'form-control input-sm','readonly']) !!}
                         </div>
-                    @endif
+                    </div>
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label input-sm">Brand</label>
                             {!! Form::input('text', 'brand', $model->brand->title, ['class' => 'form-control  input-sm','readonly']) !!}
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Utilizador</label>
+                            {!! Form::input('text', 'driver','', ['id'=>'driver','class'=>'form-control','autocomplete'=>'off','data-validation'=>'required not_numeric']) !!}
+                            <div class="hidden">
+                                {!! Form::input('text', 'driverUserId','', ['id'=>'driverUserId','class'=>'form-control','autocomplete'=>'off']) !!}
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Schedule Date From</label>
-                            <div class="input-group date">
-                                <div class="input-group-addon">
-
-                                </div>
-                                {!! Form::input('text', 'date_from', '', ['id'=>'datefromId','class' => 'form-control input-sm','autocomplete'=>'off']) !!}
+                            <div class="input-group date" id="datetimeFrom">
+                                {!! Form::input('text', 'date_from', old('date_from'), ['id'=>'datefromId','class' => 'form-control input-sm','autocomplete'=>'off']) !!}
+                                <span class="input-group-addon">
+                                    <span class="fas fa-calendar-alt"></span>
+                                </span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Schedule Date To</label>
-                            <div class="input-group date">
-                                <div class="input-group-addon">
-
-                                </div>
-                                {!! Form::input('text', 'date_to', old('date_to') , ['id'=>'datetoId','class' => 'form-control input-sm','autocomplete'=>'off','data-validation'=>'required','data-validation-error-msg-required'=>'Campo obrigatório']) !!}
+                            <div class="input-group date" id="datetimeTo">
+                                <span class="input-group-addon">
+                                    <span class="fas fa-calendar-alt"></span>
+                                    {!! Form::input('text', 'date_to', old('date_to') , ['id'=>'datetoId','class' => 'form-control input-sm','autocomplete'=>'off','data-validation'=>'required','data-validation-error-msg-required'=>'Campo obrigatório']) !!}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -73,4 +82,34 @@
     //         defaultTime: false
     //     });
     // });
+
+    $inputUser = $('#driver');
+    $inputUser.typeahead({
+        minLength: 2,
+        delay: 200,
+        items: 'all',
+        source: function (query, process) {
+            console.log(query);
+            return $.post('{{ action('Admin\UsersController@searchClientByAjax') }}', {userName: query}, function (result) {
+                return process(result);
+            });
+        },
+        displayText: function (item) {
+            return item.name + ' | ' + item.username;
+        }
+    });
+
+    $inputUser.change(function () {
+        var current = $inputUser.typeahead("getActive");
+        nome = $inputUser.val().substring(0, $inputUser.val().indexOf(" | "));
+        if (current) {
+            // Some item from your model is active!
+            if (current.name == nome) {
+                document.getElementById('driverUserId').value = current.id;
+            } else {
+                document.getElementById('driverUserId').value = 0;
+            }
+        }
+    });
+
 </script>

@@ -2,11 +2,11 @@
 
 Route::redirect('/', '/login');
 
-Route::redirect('/home', '/admin');
+Route::redirect('/home', '/cars');
 
 Auth::routes(['register' => true]);
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:admin']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' =>  ['auth','admin']], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
 
@@ -26,12 +26,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('products', 'ProductsController');
 
+    Route::get('searchClient',['as' => 'searchClient','uses'=>'UsersController@searchClientByAjax']);
+
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth','admin']], function () {
     Route::resource('cars', 'CarController');
 
     Route::resource('rents', 'RentController');
+
 });
 
 Route::resource('cars', 'CarController');

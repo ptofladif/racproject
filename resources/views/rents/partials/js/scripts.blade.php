@@ -166,6 +166,23 @@
         }
     }();
 
+    // Driver Autocomplete
+    {{--var path = "{{ route('admin.searchClient') }}";--}}
+    {{--$('#driver').typeahead({--}}
+    {{--    source: function (typeahead, query) {--}}
+    {{--        $.ajax({--}}
+    {{--            url: path + '?query=' + query,--}}
+    {{--            success: function(data) {--}}
+    {{--                typeahead.process(data)--}}
+    {{--            }--}}
+    {{--        });--}}
+    {{--    },--}}
+    {{--    onselect: function (obj) {--}}
+    {{--        alert('Selecionou '+obj.name)--}}
+    {{--    },--}}
+    {{--    property: "name"--}}
+    {{--})--}}
+
     $(document).ready(function () {
 
         Rent.initSearch();
@@ -185,5 +202,17 @@
         });
 
     });
+
+    $('#datetimeFrom').datetimepicker({
+        format: 'YYYY-MM-DD HH:mm:',
+        locale: 'pt',
+        sideBySide: true
+    })
+
+    $('#datetimeTo').datetimepicker({
+        format: 'YYYY-MM-DD HH:mm:',
+        locale: 'pt',
+        sideBySide: true
+    })
 
 </script>
