@@ -92,6 +92,55 @@
             ajaxParams[name] = value;
         };
 
+        let handleCreate = function () {
+            displaySpinner();
+            let url = '{!! route('admin.rents.create') !!}';
+
+            $('#modal-rent-create').load(url, function (result) {
+                $('#create-rent-modal').modal('show');
+            })
+
+        };
+
+        let handleStore = function () {
+            let url  = '{{ route('admin.rents.store') }}';
+
+            let form = $('#form_create_car');
+
+            let callback = function (result, status, xhr) {
+
+                handleCloseCreate();
+
+                if (result.status===200) {
+
+                    handleSuccess('Success',result.message);
+
+                    return true;
+
+                } else {
+                    handleErrors('Error',result.message);
+                }
+            };
+
+            makeAjaxRequest('POST', url, form, callback);
+        };
+
+        let handleErrors = function (title, message) {
+            infoModalVM.type = 'warning';
+            infoModalVM.title = title;
+            infoModalVM.body = message;
+
+            $('#infoModal').modal('show');
+        };
+
+        let handleSuccess   = function (title,message) {
+            infoModalVM.type = 'success';
+            infoModalVM.title = title;
+            infoModalVM.body = message;
+
+            $('#infoModal').modal('show');
+        };
+
         return {
             initSearch: function () {
                 handleSearch();
@@ -108,6 +157,12 @@
             closeEdit: function () {
                 handleCloseEdit();
             },
+            create: function () {
+                handleCreate();
+            },
+            store: function() {
+                handleStore();
+            }
         }
     }();
 

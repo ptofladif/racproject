@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Create Rental ({!!  $model->brand->title !!})</h4>
+                <h4 class="modal-title">Create Rental</h4>
                 <button type="button" class="close" aria-label="Close" onclick="Rent.closeCreate()">
                     <span aria-hidden="true">&times;</span>
                 </button>

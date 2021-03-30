@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Edit Rental ({!!  $model->brand->title !!})</h4>
+                <h4 class="modal-title">Edit Rental ({!!  $model->id !!})</h4>
                 <button type="button" class="close" aria-label="Close" onclick="Rent.closeEdit()">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,18 +11,18 @@
             <div class="modal-body">
                 <div class="card-body">
                     {{ Form::hidden('id', $model->id , array('id' => 'id')) }}
-                    @if(!empty($model->plate))
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="control-label input-sm">Plate</label>
-                                {!! Form::input('text', 'plate', $model->plate, ['class' => 'form-control input-sm','readonly']) !!}
-                            </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label input-sm">Plate</label>
+                            {!! Form::input('text', 'plate', $model->car->plate, ['class' => 'form-control input-sm','readonly']) !!}
                         </div>
-                    @endif
+                    </div>
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label input-sm">Brand</label>
-                            {!! Form::input('text', 'brand', $model->brand->title, ['class' => 'form-control  input-sm','readonly']) !!}
+                            {!! Form::input('text', 'brand', $model->car->brand->title, ['class' => 'form-control  input-sm','readonly']) !!}
                         </div>
                     </div>
 
@@ -31,9 +31,8 @@
                             <label>Date From</label>
                             <div class="input-group date">
                                 <div class="input-group-addon">
-
                                 </div>
-                                {!! Form::input('text', 'date_from', '', ['id'=>'datefromId','class' => 'form-control input-sm','autocomplete'=>'off']) !!}
+                                {!! Form::input('text', 'date_from', date('Y-m-d H:i',strtotime($model->date_from)), ['id'=>'datefromId','class' => 'form-control input-sm','autocomplete'=>'off']) !!}
                             </div>
                         </div>
                     </div>
@@ -44,7 +43,7 @@
                                 <div class="input-group-addon">
 
                                 </div>
-                                {!! Form::input('text', 'date_to', old('date_to') , ['id'=>'datetoId','class' => 'form-control input-sm','autocomplete'=>'off','data-validation'=>'required','data-validation-error-msg-required'=>'Campo obrigatório']) !!}
+                                {!! Form::input('text', 'date_to', !empty($model->date_to)?date('Y-m-d H:i',strtotime($model->date_to)):'' , ['id'=>'datetoId','class' => 'form-control input-sm','autocomplete'=>'off','data-validation'=>'required','data-validation-error-msg-required'=>'Campo obrigatório']) !!}
                             </div>
                         </div>
                     </div>

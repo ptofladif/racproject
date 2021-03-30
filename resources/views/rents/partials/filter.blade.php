@@ -1,5 +1,16 @@
 {!! Form::open() !!}
 
+@can('rent_create')
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class="btn btn-success btn-sm" type="button" onclick="Rent.create()"> {{ trans('global.add') }} {{ trans('global.rent.title_singular') }}
+                </div>
+            </div>
+        </div>
+    </div>
+@endcan
 
 <div class="card">
     <div class="card-header with-border">

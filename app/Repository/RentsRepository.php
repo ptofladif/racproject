@@ -28,7 +28,6 @@ class RentsRepository
      */
     public function search(Request $request) {
 
-
         $RentsQuery = Rent::query();
 
         $this->handleFilters($RentsQuery, $request);
@@ -85,6 +84,11 @@ class RentsRepository
             ->when($user = $request->client, function ($q) use ($user) {
                 $q->whereHas('user', function ($q2) use($user) {
                     return $q2->where('name','like','%'.$user.'%');
+                });
+            })
+            ->when($carId = $request->carId, function ($q) use ($carId) {
+                $q->whereHas('car', function ($q2) use($carId) {
+                    return $q2->where('id',$carId);
                 });
             })
             ;

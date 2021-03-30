@@ -89,8 +89,8 @@ class RentController extends Controller
     {
         abort_unless(\Gate::allows('rent_edit'), 403);
 
-        $model = Car::with('brand')
-            ->where('id',$rent->car->id)
+        $model = Rent::with('car.brand','user')
+            ->where('id',$rent->id)
             ->first();
 
         return view('rents.edit', ['model'=>$model]);
