@@ -8,13 +8,14 @@
         <li class="nav-item" style="font-size:1.5rem">
             <span>{{ auth()->user()->name }}</span>
         </li>
-
-        <li class="nav-item" style="font-size:1.5rem">
-            {{--                        {{dd($_SERVER,$_SERVER['HTTP_HOST'].'/logviewer')}}--}}
-            <a href="{{ config('env.APP_URL_PROTOCOL', 'http://').$_SERVER['HTTP_HOST'].'/log-viewer'}}" target="_blank">
-                <i class="fa fa-fw fa-book"></i> LogViewer
-            </a>
-        </li>
+        @can('user_management_access')
+            <li class="nav-item" style="font-size:1.5rem">
+                {{--                        {{dd($_SERVER,$_SERVER['HTTP_HOST'].'/logviewer')}}--}}
+                <a href="{{ config('env.APP_URL_PROTOCOL', 'http://').$_SERVER['HTTP_HOST'].'/log-viewer'}}" target="_blank">
+                    <i class="fa fa-fw fa-book"></i> LogViewer
+                </a>
+            </li>
+        @endcan
 
     </ul>
 

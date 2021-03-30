@@ -41,7 +41,7 @@ class CarsRepository
                 'cars.rented'
             ])
         ;
-
+dd($Cars->get());
         if($request->api){
             return Response::json($Cars->get());
         }
