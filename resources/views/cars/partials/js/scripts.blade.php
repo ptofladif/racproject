@@ -88,8 +88,8 @@
                 ],
                 columns: [
                     {data: null, className: 'details-control', orderable: false, defaultContent: '', searchable: false, width: '1%'},
-                    {data: 'action', className: 'create-rent', orderable: false, searchable: false, width: '1%'},
-                    {data: 'brand', name: 'brands.title', title: 'Brand', className:'input-sm text-nowrap', width: '5%'},
+                    {data: 'action', className: 'text-center create-rent', orderable: false, searchable: false, width: '1%'},
+                    {data: 'brand', name: 'brands.title', title: 'Brand', className:'text-center', width: '5%'},
                     {data: 'plate', name: 'plate', title: 'Plate', className:'text-center', width: '8%'},
                     {data: 'daily_price', name: 'daily_price', title: 'Daily price', className:'text-right text-nowrap',width: '5%'},
                     {data: 'rented', name: 'rented', title: 'Estado', className:'text-right text-nowrap',width: '5%'},
@@ -100,10 +100,7 @@
                 },
                 scrollX: "100%",
                 scrollXInner: "100%",
-                scrollCollapse: false,
-                // fixedColumns:   {
-                //     leftColumns: 2,
-                // },
+                scrollCollapse: false
             });
         };
 
