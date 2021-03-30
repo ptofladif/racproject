@@ -77,20 +77,16 @@ class RentsRepository
      */
     protected function handleFilters(Builder $query, Request $request) {
         $query
-            ->when($carId = $request->carId, function ($q) use ($carId) {
-                $q->whereHas('car', function ($q2) use($carId) {
-                    return $q2->where('id',$carId);
+            ->when($plate = $request->plate, function ($q) use ($plate) {
+                $q->whereHas('car', function ($q2) use($plate) {
+                    return $q2->where('plate','like','%'.$plate.'%');
                 });
             })
-            ->when($user_id = $request->user_id, function ($q) use ($user_id) {
-                $q->where('user_id',$user_id);
+            ->when($user = $request->client, function ($q) use ($user) {
+                $q->whereHas('user', function ($q2) use($user) {
+                    return $q2->where('name','like','%'.$user.'%');
+                });
             })
-//            ->when($minvalue = $request->minvalue, function ($q) use ($minvalue) {
-//                $q->where('daily_price','>=',$minvalue);
-//            })
-//            ->when($maxvalue = $request->maxvalue, function ($q) use ($maxvalue) {
-//                $q->where('daily_price','<=',$maxvalue);
-//            })
             ;
     }
 }

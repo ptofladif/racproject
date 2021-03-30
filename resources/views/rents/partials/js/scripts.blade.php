@@ -119,13 +119,9 @@
             let tr = $(this).closest('tr');
 
             let row = dataTableRentInstance.row(tr).data();
-            console.log(row);
+
             let route  = '{!! route('rents.edit',[':idRent']) !!}';
             route = route.replace(':idRent',row['id']);
-            console.log(route);
-            {{--let route = '{!! route('rents.edit') !!}';--}}
-
-            {{--route = route + '?id=' + row['id'];--}}
 
             $('#modal-rent-edit').load(route, function (result) {
                 $('#edit-rent-modal').modal('show');
