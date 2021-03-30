@@ -18,7 +18,7 @@ class Car extends Model
     protected $fillable = [
         'brand_id',
         'plate',
-        'dailyprice',
+        'daily_price',
         'rented',
         'created_at',
         'updated_at',

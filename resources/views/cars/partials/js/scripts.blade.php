@@ -112,6 +112,65 @@
             dataTableInstance.ajax.reload();
         };
 
+        let handleCreate = function () {
+            displaySpinner();
+            let url = '{!! route('admin.cars.create') !!}';
+
+            $('#modal-car-create').load(url, function (result) {
+                $('#create-car-modal').modal('show');
+            })
+
+        };
+
+        let handleCloseCreate = function () {
+            $('#create-car-modal').modal('hide');
+        };
+
+        let handleStore = function () {
+            let url  = '{{ route('admin.cars.store') }}';
+
+            let form = $('#form_create_car');
+
+            let callback = function (result, status, xhr) {
+
+                handleCloseCreate();
+
+                if (result.status===200) {
+
+                    handleSuccess('Success',result.message);
+
+                    return true;
+
+                } else {
+                    handleErrors('Error',result.message);
+                }
+            };
+
+            makeAjaxRequest('POST', url, form, callback);
+        };
+
+        let makeAjaxRequest = function (method, url, form, callback) {
+            callback = callback === undefined ? null : callback;
+            displaySpinner();
+            $.ajax({
+                type: method,
+                dataType: 'json',
+                url: url,
+                data: form ? form.serialize() : null,
+                success: function (result, status, xhr) {
+                    displaySpinner(false);
+                    callback(result, status, xhr);
+                    return true;
+                },
+                error: function (result, status, xhr) {
+                    displaySpinner(false);
+                    callback(result, status, xhr);
+                    return true;
+                }
+            });
+            displaySpinner(false);
+        };
+
         let handleResetSearchFilters = function () {
             $('select.form-filter, input.form-filter').each(function () {
                 $(this).val("");
@@ -125,6 +184,22 @@
             ajaxParams[name] = value;
         };
 
+        let handleErrors = function (title, message) {
+            infoModalVM.type = 'warning';
+            infoModalVM.title = title;
+            infoModalVM.body = message;
+
+            $('#infoModal').modal('show');
+        };
+
+        let handleSuccess   = function (title,message) {
+            infoModalVM.type = 'success';
+            infoModalVM.title = title;
+            infoModalVM.body = message;
+
+            $('#infoModal').modal('show');
+        };
+
         return {
             initSearch: function () {
                 handleSearch();
@@ -134,6 +209,15 @@
             },
             resetSearchFilters: function () {
                 handleResetSearchFilters();
+            },
+            create: function () {
+                handleCreate();
+            },
+            store: function() {
+                handleStore();
+            },
+            closeCreate: function () {
+                handleCloseCreate();
             },
         }
     }();

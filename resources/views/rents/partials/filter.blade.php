@@ -34,9 +34,9 @@
     <div class="card-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary btn-sm" type="button" style='margin-right: 10px !important;'
-                    onclick="Rent.resetSearchFilters()">Limpar
+                    onclick="Rent.resetSearchFilters()">Reset
             </button>
-            <button class="btn btn-primary btn-sm" type="button" onclick="Rent.setSearchFilters()">Filtrar
+            <button class="btn btn-primary btn-sm" type="button" onclick="Rent.setSearchFilters()">Search
             </button>
         </div>
     </div>

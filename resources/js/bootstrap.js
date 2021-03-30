@@ -54,3 +54,16 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/**
+ * Vue is a modern JavaScript library for building interactive web interfaces
+ * using reactive data binding and reusable components. Vue's API is clean
+ * and simple, leaving you to focus on building your next great project.
+ */
+
+window.Vue = require('vue')
+
+// Use trans function in Vue (equivalent to trans() Laravel Translations helper). See htmlheader.balde.php partial.
+Vue.prototype.trans = (key) => {
+    return _.get(window.trans, key, key)
+}

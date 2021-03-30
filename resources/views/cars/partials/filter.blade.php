@@ -1,5 +1,15 @@
 {!! Form::open() !!}
-
+@can('product_create')
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class="btn btn-success btn-sm" type="button" onclick="Car.create()"> {{ trans('global.add') }} {{ trans('global.car.title_singular') }}
+                </div>
+            </div>
+        </div>
+    </div>
+@endcan
 
 <div class="card">
     <div class="card-header with-border">
@@ -33,9 +43,9 @@
     <div class="card-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary btn-sm" type="button" style='margin-right: 10px !important;'
-                    onclick="Car.resetSearchFilters()">Limpar
+                    onclick="Car.resetSearchFilters()">Reset
             </button>
-            <button class="btn btn-primary btn-sm" type="button" onclick="Car.setSearchFilters()">Filtrar
+            <button class="btn btn-primary btn-sm" type="button" onclick="Car.setSearchFilters()">Search
             </button>
         </div>
     </div>

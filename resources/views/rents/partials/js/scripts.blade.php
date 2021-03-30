@@ -72,6 +72,7 @@
 
             dataTableRentInstance.ajax.reload();
         };
+
         let handleCloseCreate = function () {
             $('#create-rent-modal').modal('hide');
         };

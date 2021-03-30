@@ -6,6 +6,7 @@ use App\Models\Car;
 use Illuminate\Http\Request;
 use App\Repository\CarsRepository;
 use App\Models\Brand;
+use Illuminate\Support\Facades\Response;
 
 class CarController extends Controller
 {
@@ -49,7 +50,13 @@ class CarController extends Controller
     {
         abort_unless(\Gate::allows('car_create'), 403);
 
-        return view('admin.cars.create');
+        $brands = Brand::orderBy('title')->pluck('title','id')->toArray();
+
+        $viewModel=[
+            'brands'=>$brands,
+        ];
+
+        return view('cars.create',$viewModel);
     }
 
     /**
@@ -62,9 +69,18 @@ class CarController extends Controller
     {
         abort_unless(\Gate::allows('car_create'), 403);
 
-        $car = Car::create($request->all());
+        $car = Car::where('plate',$request->plate)->first();
 
-        return redirect()->route('admin.cars.index');
+        if(!empty($car)){
+            return Response::json(array('message' => 'Car already exist...','status'=> 422));
+        }else{
+            $result = Car::create( $request->except(['_token']));
+
+            if($result){
+                return Response::json(array('message' => 'Car added!','status'=> 200));
+            }
+            return Response::json(array('message' => 'No cars available','status'=> 422));
+        }
     }
 
     /**
