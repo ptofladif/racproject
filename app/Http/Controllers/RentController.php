@@ -61,6 +61,7 @@ class RentController extends Controller
      */
     public function store(Request $request)
     {
+
         abort_unless(\Gate::allows('rent_create'), 403);
 
         $car = Car::where('plate',$request->plate)->first();
