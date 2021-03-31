@@ -90,13 +90,10 @@ class UsersController extends Controller
     public function searchClientByAjax(Request $request){
 
         $searchUser = User::
-            select('id','name')
-            ->where('username', 'like', '%'.$request->name.'%')
-            ->orWhere('name', 'like', '%'.$request->name.'%')
+            select('id','name','nif')
+            ->where('name', 'like', '%'.$request->userName.'%')
             ->clients()
             ->get();
-
-        dd($searchUser);
 
         return Response::json($searchUser);
     }

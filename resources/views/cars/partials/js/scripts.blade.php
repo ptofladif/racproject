@@ -196,7 +196,7 @@
             infoModalVM.type = 'success';
             infoModalVM.title = title;
             infoModalVM.body = message;
-
+            dataTableRentInstance.draw(false);
             $('#infoModal').modal('show');
         };
 

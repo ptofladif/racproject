@@ -13,7 +13,6 @@
 
 @section('scripts')
 @parent
-{{--    @include('partials.infomodal')--}}
     @include('cars.partials.js.scripts')
     @include('rents.partials.js.scripts')
 @endsection

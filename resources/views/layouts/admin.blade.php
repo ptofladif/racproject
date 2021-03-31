@@ -8,6 +8,8 @@
 <body class="sidebar-mini sidebar-open" style="height: auto;">
     <div class="wrapper" id='app'>
 
+        <div class="loading hidden">Loading&#8230;</div>
+
         @include('layouts.partials.mainheader')
 
         @include('partials.menu')
@@ -31,8 +33,6 @@
         </form>
     </div>
     <!-- ./wrapper -->
-
-
 
 
     @section('scripts')

@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <div class="card-body">
-                    {{ Form::hidden('id', $model->id , array('id' => 'id')) }}
+                    {{ Form::hidden('car_id', $model->id , array('id' => 'id')) }}
 
                     <div class="col-md-12">
                         <div class="form-group">
@@ -30,7 +30,7 @@
                             <label>Utilizador</label>
                             {!! Form::input('text', 'driver','', ['id'=>'driver','class'=>'form-control','autocomplete'=>'off','data-validation'=>'required not_numeric']) !!}
                             <div class="hidden">
-                                {!! Form::input('text', 'driverUserId','', ['id'=>'driverUserId','class'=>'form-control','autocomplete'=>'off']) !!}
+                                {!! Form::input('text', 'user_id','', ['id'=>'clientId','class'=>'form-control','autocomplete'=>'off']) !!}
                             </div>
                         </div>
                     </div>
@@ -39,9 +39,8 @@
                         <div class="form-group">
                             <label>Schedule Date From</label>
                             <div class="input-group date" id="datetimeFrom">
-                                {!! Form::input('text', 'date_from', old('date_from'), ['id'=>'datefromId','class' => 'form-control input-sm','autocomplete'=>'off']) !!}
                                 <span class="input-group-addon">
-                                    <span class="fas fa-calendar-alt"></span>
+                                    {!! Form::input('text', 'date_from', old('date_from'), ['id'=>'datefromId','class' => 'form-control input-sm','autocomplete'=>'off']) !!}
                                 </span>
                             </div>
                         </div>
@@ -51,8 +50,8 @@
                             <label>Schedule Date To</label>
                             <div class="input-group date" id="datetimeTo">
                                 <span class="input-group-addon">
-                                    <span class="fas fa-calendar-alt"></span>
                                     {!! Form::input('text', 'date_to', old('date_to') , ['id'=>'datetoId','class' => 'form-control input-sm','autocomplete'=>'off','data-validation'=>'required','data-validation-error-msg-required'=>'Campo obrigatório']) !!}
+
                                 </span>
                             </div>
                         </div>
@@ -60,8 +59,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="Rent.closeCreate()">Voltar</button>
-                    <button type="button" class="btn btn-primary"   onclick="Rent.store()">Enviar</button>
+                    <button type="button" class="btn btn-secondary" onclick="Rent.closeCreate()">Back</button>
+                    <button type="button" class="btn btn-primary"   onclick="Rent.store()">Save</button>
                 </div>
             </div>
         </div>
@@ -70,32 +69,21 @@
 {!! Form::close() !!}
 
 <script>
-    // $(document).ready(function() {
-    //     // datepicker
-    //     $('.date').datepicker({
-    //     });
-    //
-    //     // timepicker
-    //     $('.timepickerinput').timepicker({
-    //         minuteStep: 5,
-    //         showMeridian: false,
-    //         defaultTime: false
-    //     });
-    // });
 
+    //Client autocomplete
     $inputUser = $('#driver');
+
     $inputUser.typeahead({
         minLength: 2,
         delay: 200,
         items: 'all',
         source: function (query, process) {
-            console.log(query);
             return $.post('{{ action('Admin\UsersController@searchClientByAjax') }}', {userName: query}, function (result) {
                 return process(result);
             });
         },
         displayText: function (item) {
-            return item.name + ' | ' + item.username;
+            return item.name + ' | ' + item.nif;
         }
     });
 
@@ -105,11 +93,27 @@
         if (current) {
             // Some item from your model is active!
             if (current.name == nome) {
-                document.getElementById('driverUserId').value = current.id;
+                document.getElementById('clientId').value = current.id;
             } else {
-                document.getElementById('driverUserId').value = 0;
+                document.getElementById('clientId').value = 0;
             }
         }
     });
+
+    $(document).ready(function() {
+        $('#datetimeFrom').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm',
+            locale: 'pt',
+            sideBySide: true
+        })
+
+        $('#datetimeTo').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm',
+            locale: 'pt',
+            sideBySide: true
+        })
+
+    });
+
 
 </script>

@@ -6,6 +6,8 @@ use App\Models\Rent;
 use Illuminate\Http\Request;
 use App\Repository\RentsRepository;
 use App\Models\Car;
+use Illuminate\Support\Facades\Response;
+
 class RentController extends Controller
 {
     /**
@@ -61,9 +63,24 @@ class RentController extends Controller
     {
         abort_unless(\Gate::allows('rent_create'), 403);
 
-        $rent = Rent::create($request->all());
+        $car = Car::where('plate',$request->plate)->first();
 
-        return redirect()->route('admin.rents.index');
+        if(empty($car->rented)){
+
+            $request->merge([
+                'total_cost'=>$car->daily_price,
+            ]);
+
+            $rent = Rent::create($request->except(['_token','brand','driver']));
+
+            if($rent){
+                $car->update(['rented'=>1]);
+                return Response::json(array('message' => 'Rental schedule saved!','status'=> 200));
+            }
+            return Response::json(array('message' => 'It was not possible to save the rental schedule... Please try again!','status'=> 422));
+
+        }
+        return Response::json(array('message' => 'This car is rented... Please choose another!','status'=> 422));
     }
 
     /**

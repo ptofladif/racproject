@@ -40,8 +40,4 @@ Route::group(['prefix' => 'v1', 'as' => 'client.', 'namespace' => 'Api\V1'], fun
 });
 
 
-
-
-
-
 Route::get('/master_rent_details/{carId}', 'RentController@search')->name('api.master_rent_details');

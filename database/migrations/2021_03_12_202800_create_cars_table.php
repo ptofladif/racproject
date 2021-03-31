@@ -16,7 +16,7 @@ class CreateCarsTable extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->smallInteger('brand_id');
-            $table->string('plate',10);
+            $table->string('plate',10)->unique();
             $table->decimal('daily_price',6,2);
             $table->boolean('rented')->default(0);
             $table->timestamps();

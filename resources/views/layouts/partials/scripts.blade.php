@@ -1,6 +1,7 @@
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
-<script src="{{ asset('js/libs.js') }}" type="text/javascript"></script>
+
 <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/popper.js') }}" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
@@ -23,6 +24,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('/js/bootstrap3-typeahead.min.js') }}" type="text/javascript"></script>
+
+<!-- Config -->
+<script src="{{ asset('/js/config.js') }}" type="text/javascript"></script>
 
 <script>
     $(function() {
@@ -34,7 +39,7 @@
         let colvisButtonTrans = '{{ trans('global.datatables.colvis') }}'
 
         let languages = {
-            'en': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/English.json'
+            'en': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/English.json',
         };
 
         $.extend(true, $.fn.dataTable.Buttons.defaults.dom.button, { className: 'btn' })

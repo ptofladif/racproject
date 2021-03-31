@@ -103,9 +103,10 @@
         };
 
         let handleStore = function () {
+
             let url  = '{{ route('admin.rents.store') }}';
 
-            let form = $('#form_create_car');
+            let form = $('#form_create_rent');
 
             let callback = function (result, status, xhr) {
 
@@ -125,6 +126,28 @@
             makeAjaxRequest('POST', url, form, callback);
         };
 
+        let makeAjaxRequest = function (method, url, form, callback) {
+            callback = callback === undefined ? null : callback;
+            displaySpinner();
+            $.ajax({
+                type: method,
+                dataType: 'json',
+                url: url,
+                data: form ? form.serialize() : null,
+                success: function (result, status, xhr) {
+                    displaySpinner(false);
+                    callback(result, status, xhr);
+                    return true;
+                },
+                error: function (result, status, xhr) {
+                    displaySpinner(false);
+                    callback(result, status, xhr);
+                    return true;
+                }
+            });
+            displaySpinner(false);
+        };
+
         let handleErrors = function (title, message) {
             infoModalVM.type = 'warning';
             infoModalVM.title = title;
@@ -137,7 +160,7 @@
             infoModalVM.type = 'success';
             infoModalVM.title = title;
             infoModalVM.body = message;
-
+            dataTableRentInstance.draw(false);
             $('#infoModal').modal('show');
         };
 
@@ -166,28 +189,15 @@
         }
     }();
 
-    // Driver Autocomplete
-    {{--var path = "{{ route('admin.searchClient') }}";--}}
-    {{--$('#driver').typeahead({--}}
-    {{--    source: function (typeahead, query) {--}}
-    {{--        $.ajax({--}}
-    {{--            url: path + '?query=' + query,--}}
-    {{--            success: function(data) {--}}
-    {{--                typeahead.process(data)--}}
-    {{--            }--}}
-    {{--        });--}}
-    {{--    },--}}
-    {{--    onselect: function (obj) {--}}
-    {{--        alert('Selecionou '+obj.name)--}}
-    {{--    },--}}
-    {{--    property: "name"--}}
-    {{--})--}}
-
     $(document).ready(function () {
 
         Rent.initSearch();
 
-        $("#rentstable tbody").on("click", "td.edit-rent", function(){
+        $("#rentstable tbody").on("click", "td.edit-rent", function(event){
+
+            event.preventDefault();
+
+            $('.loading').removeClass('hidden');
 
             let tr = $(this).closest('tr');
 
@@ -199,20 +209,11 @@
             $('#modal-rent-edit').load(route, function (result) {
                 $('#edit-rent-modal').modal('show');
             })
+            $('.loading').addClass('hidden');
+
         });
 
     });
 
-    $('#datetimeFrom').datetimepicker({
-        format: 'YYYY-MM-DD HH:mm:',
-        locale: 'pt',
-        sideBySide: true
-    })
-
-    $('#datetimeTo').datetimepicker({
-        format: 'YYYY-MM-DD HH:mm:',
-        locale: 'pt',
-        sideBySide: true
-    })
 
 </script>

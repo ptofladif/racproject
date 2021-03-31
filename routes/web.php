@@ -26,7 +26,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('products', 'ProductsController');
 
-    Route::get('searchClient',['as' => 'searchClient','uses'=>'UsersController@searchClientByAjax']);
+    Route::post('searchClient',['as' => 'searchClient','uses'=>'UsersController@searchClientByAjax']);
 
 });
 
