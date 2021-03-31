@@ -1,5 +1,7 @@
 <?php
 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 Route::redirect('/', '/login');
 
 Route::redirect('/home', '/cars');
