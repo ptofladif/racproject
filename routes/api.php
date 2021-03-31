@@ -15,27 +15,29 @@
 //    Route::apiResource('rents', 'RentsApiController');
 //
 //});
+Route::group(['middleware' => ['cors', 'json.response']], function () {
 
-Route::group(['prefix' => 'v1', 'as' => 'client.', 'namespace' => 'Api\V1'], function () {
+    Route::group(['prefix' => 'v1', 'as' => 'client.', 'namespace' => 'Api\V1'], function () {
 
-    Route::post('/register', 'UsersController@register');
+        Route::post('/register', 'ApiAuthController@register')->name('register.api');
 
-    Route::post('/login', 'UsersController@login');
+        Route::post('/login', 'ApiAuthController@login')->name('login.api');
 
-    Route::group(['middleware' =>['auth:api']], function () {
+        Route::group(['middleware' =>['auth:api']], function () {
 
-        Route::get('/logout', 'UsersController@logout');
+            Route::get('/logout', 'ApiAuthController@logout')->name('logout.api');
 
-        Route::group(['prefix' => 'cars'], function () {
-            Route::get('/index', 'CarsApiController@index');
-            Route::get('/search', 'CarsApiController@search');
+            Route::group(['prefix' => 'cars'], function () {
+                Route::get('/index', 'CarsApiController@index');
+                Route::get('/search', 'CarsApiController@search');
+            });
+
+            Route::group(['prefix' => 'rents'], function () {
+                Route::get('/search', 'RentsApiController@search');
+                Route::post('/store', 'RentsApiController@store');
+            });
+
         });
-
-        Route::group(['prefix' => 'rents'], function () {
-            Route::get('/search', 'RentsApiController@search');
-            Route::post('/store', 'RentsApiController@store');
-        });
-
     });
 });
 

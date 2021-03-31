@@ -4,25 +4,37 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
-class UsersController extends Controller
+class ApiAuthController extends Controller
 {
-    public function login()
+    public function login(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if ($validator->fails())
+        {
+            return response(['errors'=>$validator->errors()->all()], 422);
+        }
+
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
+            if (Hash::check($request->password, $user->password)) {
+                $token = $user->createToken('Laravel Password Grant Client')->accessToken;
+                $response = ['token' => $token];
+                return response($response, 200);
+            } else {
+                $response = ["message" => "Password mismatch"];
+                return response($response, 422);
+            }
 
-            $success['token'] = $user->createToken('appToken')->accessToken;
-dd($success['token']);
-            //After successfull authentication, notice how I return json parameters
-            return response()->json([
-                'success' => true,
-                'token' => $success,
-                'user' => $user
-            ]);
         } else {
             //if authentication is unsuccessfull, notice how I return json parameters
             return response()->json([
@@ -39,10 +51,10 @@ dd($success['token']);
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'name' => 'required|string|max:255',
             'phone' => 'required|unique:users|regex:/9[1236]\d{7}/',
-            'email' => 'required|email|unique:users',
-            'password' => 'required',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|string|min:8|confirmed',
             'nif' => 'required|unique:users|nifextension',
         ]);
 
@@ -50,16 +62,18 @@ dd($success['token']);
             return response()->json([
                 'success' => false,
                 'message' => $validator->errors(),
-            ], 401);
+            ], 422);
         }
 
         $input = $request->all();
 
-        $input['password'] = bcrypt($input['password']);
+        $input['password'] = Hash::make($input['password']);
+
+        $request['remember_token'] = Str::random(10);
 
         $user = User::create($input);
 
-        $success['token'] = $user->createToken('appToken')->accessToken;
+        $success['token'] = $user->createToken('Laravel Password Grant Client')->accessToken;
 
         return response()->json([
             'success' => true,
