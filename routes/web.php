@@ -23,6 +23,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('users', 'UsersController');
 
 });
+
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' =>  ['auth']], function () {
 
     Route::delete('products/destroy', 'ProductsController@massDestroy')->name('products.massDestroy');
@@ -32,7 +33,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('searchClient',['as' => 'searchClient','uses'=>'UsersController@searchClientByAjax']);
 
 });
-
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::resource('cars', 'CarController');
