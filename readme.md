@@ -35,3 +35,12 @@ heroku create rac-app-mf
 heroku git:remote -a rac-app-mf
 
 git push heroku main
+
+
+heroku run bash
+
+composer install
+
+php artisan config:cache
+
+php artisan passport:keys
