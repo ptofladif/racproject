@@ -16,7 +16,7 @@ class UsersController extends Controller
             $user = Auth::user();
 
             $success['token'] = $user->createToken('appToken')->accessToken;
-
+dd($success['token']);
             //After successfull authentication, notice how I return json parameters
             return response()->json([
                 'success' => true,
