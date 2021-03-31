@@ -42,5 +42,6 @@ class Kernel extends HttpKernel
         'auth.basic'    => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'admin'         => \App\Http\Middleware\IsAdmin::class,
         'cors'          => \App\Http\Middleware\Cors::class,
+        'json.response' => \App\Http\Middleware\ForceJsonResponse::class,
     ];
 }
