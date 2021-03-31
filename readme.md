@@ -23,3 +23,15 @@ php artisan make:migration create_rents_table  --create=rents
 php artisan make:controller RentController --resource --model=Rent
 ```
 ##npm start
+
+heroku plugins:install heroku-builds
+
+heroku builds:cancel -a YOUR_HEROKU_APP_NAME
+
+heroku login -i
+
+heroku create rac-app-mf
+
+heroku git:remote -a rac-app-mf
+
+git push heroku main
