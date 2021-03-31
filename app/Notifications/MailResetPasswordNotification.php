@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Notifications;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Lang;
+
 class MailResetPasswordNotification extends ResetPassword
 {
     use Queueable;
