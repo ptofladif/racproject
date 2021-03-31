@@ -20,6 +20,7 @@ class Rent extends Model
         'car_id',
         'date_from',
         'date_to',
+        'total_cost',
         'created_at',
         'updated_at',
         'deleted_at',
