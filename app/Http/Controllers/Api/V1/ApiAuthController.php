@@ -16,7 +16,7 @@ class ApiAuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:8',
         ]);
 
         if ($validator->fails())
@@ -29,7 +29,7 @@ class ApiAuthController extends Controller
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
                 $response = ['token' => $token];
-                return response($response, 200);
+                return response($response,200);
             } else {
                 $response = ["message" => "Password mismatch"];
                 return response($response, 422);
