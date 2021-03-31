@@ -42,6 +42,10 @@ class AppServiceProvider extends ServiceProvider
             });
         }
 
+        if(config('app.env') === 'production') {
+            \URL::forceScheme('https');
+        }
+
         Validator::extend('nifextension', function($attribute, $value, $parameters, $validator) {
 //            dd($attribute, $value, $parameters, $validator);
             if(!empty($attribute) && $attribute=='nif' && !empty($value)){
