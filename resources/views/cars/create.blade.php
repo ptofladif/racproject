@@ -10,22 +10,26 @@
             </div>
             <div class="modal-body">
                 <div class="card-body">
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label input-sm">Plate</label>
                             {!! Form::input('text', 'plate', '', ['class' => 'form-control input-sm']) !!}
                         </div>
                     </div>
+
                     <div class="col-md-12">
                         <label class="text-sm text-nowrap">Brand</label>
                         {!! Form::select('brand_id',[null=>''] +$brands,'',['id'=>'brandId','class'=>'form-control']) !!}
                     </div>
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label input-sm">Daily Price</label>
                             {!! Form::input('text', 'daily_price', '', ['class' => 'form-control input-sm']) !!}
                         </div>
                     </div>
+
                 </div>
 
                 <div class="modal-footer">
@@ -38,17 +42,3 @@
 </div>
 {!! Form::close() !!}
 
-<script>
-    // $(document).ready(function() {
-    //     // datepicker
-    //     $('.date').datepicker({
-    //     });
-    //
-    //     // timepicker
-    //     $('.timepickerinput').timepicker({
-    //         minuteStep: 5,
-    //         showMeridian: false,
-    //         defaultTime: false
-    //     });
-    // });
-</script>
