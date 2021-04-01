@@ -1,0 +1,430 @@
+{
+	"info": {
+		"_postman_id": "2dcb24c6-fe62-4d51-b3ab-161005525050",
+		"name": "Rac-app-mf.heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "RegisterUser",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone",
+									"value": "929919191",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Marco",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "mardalgo1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "nif",
+									"value": "202910784",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://rac-app-mf.herokuapp.com/api/v1/register",
+							"protocol": "https",
+							"host": [
+								"rac-app-mf",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserLogin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ana.margarida@outlook.com\",\r\n    \"password\":\"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://rac-app-mf.herokuapp.com/api/v1/login",
+							"protocol": "https",
+							"host": [
+								"rac-app-mf",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserLogout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODAwN2ZhNDA4NGZjMjQyYTZmMGE1M2EwZDI5N2Q2N2Q1Mzk1OWEyMTY0NjhiODNiMDE0YWM5MjRhYmZhM2Y5ODgzYTdhNTUzNTdjOTFjNmYiLCJpYXQiOjE2MTcyMzczODEsIm5iZiI6MTYxNzIzNzM4MSwiZXhwIjoxNjQ4NzczMzgxLCJzdWIiOiI5Iiwic2NvcGVzIjpbXX0.MxPQ1qsoFgEGNUFMQsEb_3YFW2YXTn_PlLP2mO33TdQIL-BHilHw1-CTI2EDJAvsXfucQBhn4q9T0X-DzlVfdCaZqF2qrPVGPctcH0gYX5JKOyeLkOoePZC5St9KXFi9p8rgEvqa42pFng5-jUqa0ju_zzKl1-fzPyg5ZS7YVdQwU9R3pLEra-I775AZQvcRWAMiFF1N4OurjNqDQN1mUTf6NY4ZrvkBVtK8L2Zu4G1w9Xy_vPKo4bg97ETk_TMbBktHV2bf6E2suldBbYdZr5CzPm7_A_3k7HOGQH4OkLUJPXkq9uJ1NVD4ZX2HVpz3dyD77O9puYZVrT1uetiqCrK5SUL3ZzidH0ZmHPfFO4WK5OURzX2yCWEN1DLTSD7hOBqtHfbITWRFl-cIzbgjM-IN9zH8-ohaOtagD6LUO_MWOilX5g67id9-yp-vGlNroGyqfTjkYK0hpyF7fu2ZkqSyFCSfAeIa1zIG2_oQGo_eukxpQ_Bc39en0Qbu6-DvwzSy0yLFpNPEtcIElQu5DQxuz6xoVncbADS861xw3KZGlICw_VJEFBR_euM48hgNOsiaX1goNHGPVzhmV4pKN5NZsh2CWT-FYolKocY6rY6zpSdg3jRjnuIAWvYwimQ68DPi3H4f71TcnMnBbax052Iqs1KhLy9bWJh6aj-E8MA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mardalgo1@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://rac-app-mf.herokuapp.com/api/v1/logout",
+							"protocol": "https",
+							"host": [
+								"rac-app-mf",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ClientUsers",
+			"item": [
+				{
+					"name": "cars",
+					"item": [
+						{
+							"name": "CarById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWUxNDJiOTAwNzYzYzZhMjdhNDhjMWUyZWJkYmI4MTYzM2YwNjFjNjliMDRlZjUzNmE4OWM2MzYyNDVjMjkzMjlhM2YzYjM5NDNkZGE2N2EiLCJpYXQiOjE2MTcyMzgxOTIsIm5iZiI6MTYxNzIzODE5MiwiZXhwIjoxNjQ4Nzc0MTkyLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.IQqEiJo1mEmZ4gmKYZ2GK5qWRuIFmfbTmy45CDuYr6J_UxE2lr0Zf6z-05RfT4Zq-czc5j57fM43ecoYMBIACUcH8onAwC-dTB5-SA-4lbr9gqJKvqpWca98eZYvLuo34DpmPvqGXyFyqwtvD239DMnUN7qe10sI2cloAJeTDOotEU0UcV8OSvruIR32ACBjgeaGsQAmFucLOmasMJmM1zCvHflC4E3HxXi2DtSrp2HQANlDkJse-OXHD6HN4Xjj55k1PfoW2Snj-4rQmvwHv0A6meedhVniaGvigHFK4yD8DPh4IdDNvlm2-Q9_gmjSi9ltuzVeFr6EcwHPfOOVn55weco-tynup9o9ZlMv6mQz4_vCF0AtPRv5L0pO-KwllKOnOapiLbuvFOxHQ1blmFms_n7uZsJvo2hk-eLwDk4pDAzIAXMyf8Sj3DBhaMtb6UjpHotH7ws4cs0vDXYaOx0NMWGg5Ild1mZgtf0Cj7cDQM-CUoNH2J3rEDa9_MqEP2gSv8I-agZkAVDy1nFg2BZu6LbzRKkl_Pd3ryAMitbH2TiR7auy2XygiUFuWeXZrpxC0T7uIZKSV3lwU6HsorIumgwiucj5j22CaIOiQFr1Ek9Qng49dDYihe31oqZTUq0UN3CoOES_h34YpZZ0DsOMgYnHTl_OTLRbHfUzwX8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://rac-app-mf.herokuapp.com/api/v1/cars/search?id=2",
+									"protocol": "https",
+									"host": [
+										"rac-app-mf",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										"search"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cars available",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWUxNDJiOTAwNzYzYzZhMjdhNDhjMWUyZWJkYmI4MTYzM2YwNjFjNjliMDRlZjUzNmE4OWM2MzYyNDVjMjkzMjlhM2YzYjM5NDNkZGE2N2EiLCJpYXQiOjE2MTcyMzgxOTIsIm5iZiI6MTYxNzIzODE5MiwiZXhwIjoxNjQ4Nzc0MTkyLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.IQqEiJo1mEmZ4gmKYZ2GK5qWRuIFmfbTmy45CDuYr6J_UxE2lr0Zf6z-05RfT4Zq-czc5j57fM43ecoYMBIACUcH8onAwC-dTB5-SA-4lbr9gqJKvqpWca98eZYvLuo34DpmPvqGXyFyqwtvD239DMnUN7qe10sI2cloAJeTDOotEU0UcV8OSvruIR32ACBjgeaGsQAmFucLOmasMJmM1zCvHflC4E3HxXi2DtSrp2HQANlDkJse-OXHD6HN4Xjj55k1PfoW2Snj-4rQmvwHv0A6meedhVniaGvigHFK4yD8DPh4IdDNvlm2-Q9_gmjSi9ltuzVeFr6EcwHPfOOVn55weco-tynup9o9ZlMv6mQz4_vCF0AtPRv5L0pO-KwllKOnOapiLbuvFOxHQ1blmFms_n7uZsJvo2hk-eLwDk4pDAzIAXMyf8Sj3DBhaMtb6UjpHotH7ws4cs0vDXYaOx0NMWGg5Ild1mZgtf0Cj7cDQM-CUoNH2J3rEDa9_MqEP2gSv8I-agZkAVDy1nFg2BZu6LbzRKkl_Pd3ryAMitbH2TiR7auy2XygiUFuWeXZrpxC0T7uIZKSV3lwU6HsorIumgwiucj5j22CaIOiQFr1Ek9Qng49dDYihe31oqZTUq0UN3CoOES_h34YpZZ0DsOMgYnHTl_OTLRbHfUzwX8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "https://rac-app-mf.herokuapp.com/api/v1/cars/search?rented=0",
+									"protocol": "https",
+									"host": [
+										"rac-app-mf",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										"search"
+									],
+									"query": [
+										{
+											"key": "rented",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CarsByPlate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODg4NTc1MGVjZTYxOGU3NTA5ZjI3NTc1Y2I5MzA0ZmFjYjhjYTcxYTU2OWRmY2ZlN2UzYjY4Y2MwZTZlMjA0Y2YyM2Q2NGNmMTgwZmY0MjAiLCJpYXQiOjE2MTcyMzg0NzgsIm5iZiI6MTYxNzIzODQ3OCwiZXhwIjoxNjQ4Nzc0NDc4LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.YvQ0VX5kFxL4TMYY_6fU9i1J0Z3EqkSrbj_yqPoLSGTt2N9ILk6lDdE2GQTBa6Hn3-ynGw0AyYvt2cq0Enm0EMH6EbiBCROG_np_1KLTs9GyYH6E1_YUmuY9RQrkRsKo3RSl_RkdKTC9PHffDqyK9s8Ot-cKi8-jyklf5857MVxDREdRdR4oh51nZFBbhQ5-T4D6F2PfVcxJyipMzcJAEkZERUOipn7MNd6V9AG_LD_O1nn5QQKToPBagFVGmi4syAd0loGQr__Zy5UhFk40K5nMpk1CeCJWF_MP-Mt7kjl3BhQ-sScMA9IyDp0QT1pgmz7Gh0E2aNDUmwsswZhVsvll3OwJOYhaHSK8g2hvdvo6aum2VqP_tAhM7hj4jSMOqisTiH1z2Brb6sT5rnenEENb5JmhQTnEqil-dtifPMFtrQ2sP4-9FJv5TCMgBBRTV7JmuhE-2_mBtppxNOrebrqxfw3eqrjqLfsi7ouQWzZ2lVSJiKBJW1aw5p4EupOXudljQ2jm6_iZOjlR6ECSofyr4eeAFdEJ7EE5pEoPoWMxVBgv7_J1knR5mvX4lYb2Wy1uzh3VSeqIlGo7XMKN6xYw2r24tfesGKp0LmB4LPxtdfJ0UOh7B0sOAXGWmPgJocfLg6NukSQmpvfdNbnYYQCUSeRAhs9AqqtsrCu4VMI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "https://rac-app-mf.herokuapp.com/api/v1/cars/search?plate=23-TE-37",
+									"protocol": "https",
+									"host": [
+										"rac-app-mf",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										"search"
+									],
+									"query": [
+										{
+											"key": "plate",
+											"value": "23-TE-37"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CarsIndex",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWUxNDJiOTAwNzYzYzZhMjdhNDhjMWUyZWJkYmI4MTYzM2YwNjFjNjliMDRlZjUzNmE4OWM2MzYyNDVjMjkzMjlhM2YzYjM5NDNkZGE2N2EiLCJpYXQiOjE2MTcyMzgxOTIsIm5iZiI6MTYxNzIzODE5MiwiZXhwIjoxNjQ4Nzc0MTkyLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.IQqEiJo1mEmZ4gmKYZ2GK5qWRuIFmfbTmy45CDuYr6J_UxE2lr0Zf6z-05RfT4Zq-czc5j57fM43ecoYMBIACUcH8onAwC-dTB5-SA-4lbr9gqJKvqpWca98eZYvLuo34DpmPvqGXyFyqwtvD239DMnUN7qe10sI2cloAJeTDOotEU0UcV8OSvruIR32ACBjgeaGsQAmFucLOmasMJmM1zCvHflC4E3HxXi2DtSrp2HQANlDkJse-OXHD6HN4Xjj55k1PfoW2Snj-4rQmvwHv0A6meedhVniaGvigHFK4yD8DPh4IdDNvlm2-Q9_gmjSi9ltuzVeFr6EcwHPfOOVn55weco-tynup9o9ZlMv6mQz4_vCF0AtPRv5L0pO-KwllKOnOapiLbuvFOxHQ1blmFms_n7uZsJvo2hk-eLwDk4pDAzIAXMyf8Sj3DBhaMtb6UjpHotH7ws4cs0vDXYaOx0NMWGg5Ild1mZgtf0Cj7cDQM-CUoNH2J3rEDa9_MqEP2gSv8I-agZkAVDy1nFg2BZu6LbzRKkl_Pd3ryAMitbH2TiR7auy2XygiUFuWeXZrpxC0T7uIZKSV3lwU6HsorIumgwiucj5j22CaIOiQFr1Ek9Qng49dDYihe31oqZTUq0UN3CoOES_h34YpZZ0DsOMgYnHTl_OTLRbHfUzwX8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://rac-app-mf.herokuapp.com/api/v1/cars/index",
+									"protocol": "https",
+									"host": [
+										"rac-app-mf",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										"index"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "rents",
+					"item": [
+						{
+							"name": "create rent",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNmMwNmFlZDI5YTUxYzZiNDIzZjc1N2U4NWE1NmE1ZTUzNDJmYjFhYTlmNWZlOTY3YTlhNjUyOTE1NDdlMjk3ODEyNzQzNDY0OWFiODI4ODYiLCJpYXQiOjE2MTcyMzkyMjAsIm5iZiI6MTYxNzIzOTIyMCwiZXhwIjoxNjQ4Nzc1MjIwLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.my3JBlx7szLUREoZU3sa_M2rGqSa3V0ycyTkPRniORSotdF7mLKr5y_bLHw3ueUwUFc1RtAUQGKBLbQdE1fDvf8HEem031pUBMYRJ4wIdgFwGPUNXqBZvaAkASwkWTEj01sb7CyP1VW7jMhl1XcjK3mLSeu94LWopqVz7swqN3cvSHM_5xxpHGJJcz4SLS_OsZDhYyskRa0AVt0ka0u9gFacz7cuB7LjviPjfx_ingkQI3D_C3wq4OeHfBLjJBFW0K10-RLaGCE14WcsD8pQPz661Fx4nqvMrZkBaEUA0I-0hffZOdc8TB2XItEyvjJ5xQSbVr5_UwnZ5nXBcYtZkVx8AvjHyU3evHX7gQJGQbmcss9Gl1a80Yy7HJWyeAUh7OpioWYc7fpw5FV2e1-tQVrJBpwzudbfbjDXRbku1MDLfmXLHcIL8JCOpKOb4l_8bn00cfPVTKx-MGy5ZAImJqY4diGDjCrvf5IoxdNcSR7MoBWqOMORO3RfWq2ajbbXiMpKFf3rB38VUYVOIEAPvH_4-8iQ9lnGiVqUCoDbV8g842EXt-u5CrWlXW8Tvb52g-zVuXm1Q06sZX1XydYJwy-Hg_snqC1G43pEvk0JUhW2ZZIqGSKZUysdiE1wT0j_HrX_3M4x4XXiJEf6ZbwtUBTSZahkzaiN6LCU2uYDEJw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "car_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "date_from",
+											"value": "2021-03-23 10:00:00",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://rac-app-mf.herokuapp.com/api/v1/rents/store?car_id=2&date_from=2021-03-31 10:00:00&date_to=2021-03-05 10:00:00",
+									"protocol": "https",
+									"host": [
+										"rac-app-mf",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rents",
+										"store"
+									],
+									"query": [
+										{
+											"key": "car_id",
+											"value": "2"
+										},
+										{
+											"key": "date_from",
+											"value": "2021-03-31 10:00:00"
+										},
+										{
+											"key": "date_to",
+											"value": "2021-03-05 10:00:00"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "rentsBy userId",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODg4NTc1MGVjZTYxOGU3NTA5ZjI3NTc1Y2I5MzA0ZmFjYjhjYTcxYTU2OWRmY2ZlN2UzYjY4Y2MwZTZlMjA0Y2YyM2Q2NGNmMTgwZmY0MjAiLCJpYXQiOjE2MTcyMzg0NzgsIm5iZiI6MTYxNzIzODQ3OCwiZXhwIjoxNjQ4Nzc0NDc4LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.YvQ0VX5kFxL4TMYY_6fU9i1J0Z3EqkSrbj_yqPoLSGTt2N9ILk6lDdE2GQTBa6Hn3-ynGw0AyYvt2cq0Enm0EMH6EbiBCROG_np_1KLTs9GyYH6E1_YUmuY9RQrkRsKo3RSl_RkdKTC9PHffDqyK9s8Ot-cKi8-jyklf5857MVxDREdRdR4oh51nZFBbhQ5-T4D6F2PfVcxJyipMzcJAEkZERUOipn7MNd6V9AG_LD_O1nn5QQKToPBagFVGmi4syAd0loGQr__Zy5UhFk40K5nMpk1CeCJWF_MP-Mt7kjl3BhQ-sScMA9IyDp0QT1pgmz7Gh0E2aNDUmwsswZhVsvll3OwJOYhaHSK8g2hvdvo6aum2VqP_tAhM7hj4jSMOqisTiH1z2Brb6sT5rnenEENb5JmhQTnEqil-dtifPMFtrQ2sP4-9FJv5TCMgBBRTV7JmuhE-2_mBtppxNOrebrqxfw3eqrjqLfsi7ouQWzZ2lVSJiKBJW1aw5p4EupOXudljQ2jm6_iZOjlR6ECSofyr4eeAFdEJ7EE5pEoPoWMxVBgv7_J1knR5mvX4lYb2Wy1uzh3VSeqIlGo7XMKN6xYw2r24tfesGKp0LmB4LPxtdfJ0UOh7B0sOAXGWmPgJocfLg6NukSQmpvfdNbnYYQCUSeRAhs9AqqtsrCu4VMI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "https://rac-app-mf.herokuapp.com/api/v1/rents/search",
+									"protocol": "https",
+									"host": [
+										"rac-app-mf",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rents",
+										"search"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
