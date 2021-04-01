@@ -113,7 +113,7 @@
         };
 
         let handleCreate = function () {
-            displaySpinner();
+
             let url = '{!! route('admin.cars.create') !!}';
 
             $('#modal-car-create').load(url, function (result) {
