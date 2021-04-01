@@ -41,6 +41,8 @@ class RentsApiController extends Controller
     {
         try{
 
+            Log::debug(pathinfo(__FILE__, PATHINFO_FILENAME) . ' linha ' .__LINE__. ' ' . print_r($request->car_id, 1));
+
             $car = Car::where('id',$request->car_id)->first();
 
             Log::debug(pathinfo(__FILE__, PATHINFO_FILENAME) . ' linha ' .__LINE__. ' ' . print_r($car, 1));
