@@ -40,9 +40,9 @@ class RentsApiController extends Controller
     public function store(Request $request)
     {
         try{
+
             $car = Car::where('id',$request->car_id)->first();
 
-            Log::debug(pathinfo(__FILE__, PATHINFO_FILENAME) . ' linha ' .__LINE__. ' ' . print_r($request->all(), 1));
             Log::debug(pathinfo(__FILE__, PATHINFO_FILENAME) . ' linha ' .__LINE__. ' ' . print_r($car, 1));
 
             if(empty($car->rented)){
