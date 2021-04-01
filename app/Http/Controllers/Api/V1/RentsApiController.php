@@ -35,7 +35,7 @@ class RentsApiController extends Controller
 
         return $repository->search($request);
     }
-    
+
     public function store(Request $request)
     {
         try{
