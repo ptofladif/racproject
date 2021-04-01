@@ -35,26 +35,28 @@ class RentsApiController extends Controller
 
         return $repository->search($request);
     }
-
-//    public function myrents(){
-//        $rents = Rent::where('user_id',Auth::user()->id)->get();
-//        return $rents;
-//    }
-
+    
     public function store(Request $request)
     {
         try{
             $car = Car::where('id',$request->car_id)->first();
 
             if(empty($car->rented)){
+                $datediff = strtotime($request->date_to) - strtotime($request->date_from);
+
+                $countdays = abs($datediff / (60 * 60 * 24));
+
                 $request->merge(
-                    ['user_id'=>Auth::user()->id]
+                    [
+                        'user_id'    => Auth::user()->id,
+                        'total_cost' => $countdays*$car->daily_price,
+                    ]
                 );
 
                 $newrent = Rent::create($request->all());
 
                 if($newrent){
-                    $car = Car::where('id',$request->car_id)->update(['rented' => 1]);
+                    $car->update(['rented'=>1]);
                 }
 
                 return $newrent;
