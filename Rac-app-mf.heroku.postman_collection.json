@@ -75,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"ana.margarida@outlook.com\",\r\n    \"password\":\"123456789\"\r\n}",
+							"raw": "{\r\n    \"email\": \"filipa.jacob@gmail.com\",\r\n    \"password\":\"123456789\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -213,7 +213,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "https://rac-app-mf.herokuapp.com/api/v1/cars/search?rented=0",
+									"raw": "https://rac-app-mf.herokuapp.com/api/v1/cars/search?rented=1",
 									"protocol": "https",
 									"host": [
 										"rac-app-mf",
@@ -229,7 +229,7 @@
 									"query": [
 										{
 											"key": "rented",
-											"value": "0"
+											"value": "1"
 										}
 									]
 								}
@@ -328,7 +328,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNmMwNmFlZDI5YTUxYzZiNDIzZjc1N2U4NWE1NmE1ZTUzNDJmYjFhYTlmNWZlOTY3YTlhNjUyOTE1NDdlMjk3ODEyNzQzNDY0OWFiODI4ODYiLCJpYXQiOjE2MTcyMzkyMjAsIm5iZiI6MTYxNzIzOTIyMCwiZXhwIjoxNjQ4Nzc1MjIwLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.my3JBlx7szLUREoZU3sa_M2rGqSa3V0ycyTkPRniORSotdF7mLKr5y_bLHw3ueUwUFc1RtAUQGKBLbQdE1fDvf8HEem031pUBMYRJ4wIdgFwGPUNXqBZvaAkASwkWTEj01sb7CyP1VW7jMhl1XcjK3mLSeu94LWopqVz7swqN3cvSHM_5xxpHGJJcz4SLS_OsZDhYyskRa0AVt0ka0u9gFacz7cuB7LjviPjfx_ingkQI3D_C3wq4OeHfBLjJBFW0K10-RLaGCE14WcsD8pQPz661Fx4nqvMrZkBaEUA0I-0hffZOdc8TB2XItEyvjJ5xQSbVr5_UwnZ5nXBcYtZkVx8AvjHyU3evHX7gQJGQbmcss9Gl1a80Yy7HJWyeAUh7OpioWYc7fpw5FV2e1-tQVrJBpwzudbfbjDXRbku1MDLfmXLHcIL8JCOpKOb4l_8bn00cfPVTKx-MGy5ZAImJqY4diGDjCrvf5IoxdNcSR7MoBWqOMORO3RfWq2ajbbXiMpKFf3rB38VUYVOIEAPvH_4-8iQ9lnGiVqUCoDbV8g842EXt-u5CrWlXW8Tvb52g-zVuXm1Q06sZX1XydYJwy-Hg_snqC1G43pEvk0JUhW2ZZIqGSKZUysdiE1wT0j_HrX_3M4x4XXiJEf6ZbwtUBTSZahkzaiN6LCU2uYDEJw",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzc4N2FlMjQ2NWE3OGFkOWNlZWE3NDY5YTNjZWJiMTQwYmFiZTJlYzYyNzRhOWUyNTBmZDE3M2U3N2JkYzhlZjk4OWFkYmYxN2M4MGQxYjkiLCJpYXQiOjE2MTcyNDIzNjgsIm5iZiI6MTYxNzI0MjM2OCwiZXhwIjoxNjQ4Nzc4MzY4LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.vJxBoyHF2Sz351FktDnc8LnBpNLaCJvh4sTZ2Zj8QxjbzBynV2OOhFUQtvPrPysRxCxVOU0cQqesSXqVkVjiWtdr_HUPLHDcFbNnDXSKbVS745WoxpodUY1J3zIgfYYmFdoiOSj84nTidhCgDzpzL51iz-xtzYFYYCHGNYuRxL6H_ogrVa139vtYRi0-u8UBgaHpQ6JFe-ZC6AV_QPWgIV8QutiVTWp-zUd8efWmmZEPdLvwXnzoSeZCPyBQqnu_XQ_6UK5T4p5GZGum0GTetxtgyfnopGhDK-exXmcS94PKbwZtcQAD6UxK6VS5jVh-jkAq8qfokQVg_Y3Xa24ikd9ILundtLmM0f_EAC_apNQex_YntfvcVijZaE_SJI0DSosHIkX39Y1eU61Tnf2NLaPKowU-loh5X3iRcgNTeLor3gk7yALK0V_P4OmLyLzrfzHTW5mOBx4RrJrgEM1txCNYK0ivg82gzLqGlVjg9BQ4QaIm3vfj5fN0IVNUChOXIGyUwe-vWWTVQ_HoB9zKLiRZW8W6zzigwi-B3MAJDYYBPkeCspXqk1y4IDu1GPxw3f0MQR0YGqiLMKagRvIfPDqJiiJ10iki7BinAREuFUevUOkGo4POTVhmKPDjdI0T96n53fs-nlZC4e11yPhHHtm_AVczjHOQrIHW0-1fMvI",
 											"type": "string"
 										}
 									]
@@ -337,21 +337,10 @@
 								"header": [],
 								"body": {
 									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "car_id",
-											"value": "2",
-											"type": "text"
-										},
-										{
-											"key": "date_from",
-											"value": "2021-03-23 10:00:00",
-											"type": "text"
-										}
-									]
+									"formdata": []
 								},
 								"url": {
-									"raw": "https://rac-app-mf.herokuapp.com/api/v1/rents/store?car_id=2&date_from=2021-03-31 10:00:00&date_to=2021-03-05 10:00:00",
+									"raw": "https://rac-app-mf.herokuapp.com/api/v1/rents/store?car_id=6&date_from=2021-04-01 10:00:00&date_to=2021-03-05 10:00:00",
 									"protocol": "https",
 									"host": [
 										"rac-app-mf",
@@ -367,11 +356,11 @@
 									"query": [
 										{
 											"key": "car_id",
-											"value": "2"
+											"value": "6"
 										},
 										{
 											"key": "date_from",
-											"value": "2021-03-31 10:00:00"
+											"value": "2021-04-01 10:00:00"
 										},
 										{
 											"key": "date_to",
@@ -393,7 +382,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODg4NTc1MGVjZTYxOGU3NTA5ZjI3NTc1Y2I5MzA0ZmFjYjhjYTcxYTU2OWRmY2ZlN2UzYjY4Y2MwZTZlMjA0Y2YyM2Q2NGNmMTgwZmY0MjAiLCJpYXQiOjE2MTcyMzg0NzgsIm5iZiI6MTYxNzIzODQ3OCwiZXhwIjoxNjQ4Nzc0NDc4LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.YvQ0VX5kFxL4TMYY_6fU9i1J0Z3EqkSrbj_yqPoLSGTt2N9ILk6lDdE2GQTBa6Hn3-ynGw0AyYvt2cq0Enm0EMH6EbiBCROG_np_1KLTs9GyYH6E1_YUmuY9RQrkRsKo3RSl_RkdKTC9PHffDqyK9s8Ot-cKi8-jyklf5857MVxDREdRdR4oh51nZFBbhQ5-T4D6F2PfVcxJyipMzcJAEkZERUOipn7MNd6V9AG_LD_O1nn5QQKToPBagFVGmi4syAd0loGQr__Zy5UhFk40K5nMpk1CeCJWF_MP-Mt7kjl3BhQ-sScMA9IyDp0QT1pgmz7Gh0E2aNDUmwsswZhVsvll3OwJOYhaHSK8g2hvdvo6aum2VqP_tAhM7hj4jSMOqisTiH1z2Brb6sT5rnenEENb5JmhQTnEqil-dtifPMFtrQ2sP4-9FJv5TCMgBBRTV7JmuhE-2_mBtppxNOrebrqxfw3eqrjqLfsi7ouQWzZ2lVSJiKBJW1aw5p4EupOXudljQ2jm6_iZOjlR6ECSofyr4eeAFdEJ7EE5pEoPoWMxVBgv7_J1knR5mvX4lYb2Wy1uzh3VSeqIlGo7XMKN6xYw2r24tfesGKp0LmB4LPxtdfJ0UOh7B0sOAXGWmPgJocfLg6NukSQmpvfdNbnYYQCUSeRAhs9AqqtsrCu4VMI",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDIzMTRkMGYyYzk0NzE5Yzc2ZGM2YjliNWM4MDE3ZjllNzc2NTYzYzc5MGMxNDE1MWI4NjYxODNjODQyYjc0YWEwZTM3YmI1Njk4YzY2MWUiLCJpYXQiOjE2MTcyNDEzNjYsIm5iZiI6MTYxNzI0MTM2NiwiZXhwIjoxNjQ4Nzc3MzY1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.jAcG7Zm5_B8zDrrM-aBXmlOdQTRPD1yCKqeo7rv1AVVGE-pyPldFri7PBwlyEAaAe8eYjIP1kIapbBOvmuEmBOMC9phAXWRf9MasBZZgiFItkA4lTisWwI8tamc3IKny-MxZ-IgH5XaOoRfniU4FgJ_RaW2pkcOfgouioJL62Q1uyaRS0vNIfsyj1wqZh4dwHsSpkPY-zZQlleGuZLVsQjdP4dWPEmBLb5rU03W8uBA49E5hcs_DqS8mN4jkY-ZdcoHiZxigItoFQ5J2flpQAmueRvpUHnvFF0vK40NLHt741vJNeBcLN3dBeDQGwXaLQsIj7NWoCpGHv5oj03NSbThqc_dX-9KcZ7NMXhPSsUqqJtModcRzCGd04YgzFH5bzNQWt0ce3OYP4FFQZKlAhZt7EBIBzaaBkCQJqmhMF71yrNYLONjGOQcER67aNUvDH4P4zEOhTcmmJ7N01J2d_UkxI5TihAVfD-cX_wxzoH0IebdroTNlOYwwctm8KaqNEiKS9oHwQk2uy1wnHGTr9JgxVzsiAc6Y0u2Ybz1e47KO9VkvWpIvY_EUCgZ6TlAX9U_JKMfs3Fc3LQ5aRLuPDA1BBSmaPkr3cMDGUhFUYhmC4Y2_-1h80BMIn-YXzYH1J-KQ-4P-hLLutYSm70R9cItsu7IWmP-8DoDX1c-q9ao",
 											"type": "string"
 										}
 									]
