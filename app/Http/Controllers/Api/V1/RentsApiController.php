@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Car;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Log;
 
 class RentsApiController extends Controller
 {
@@ -40,6 +41,8 @@ class RentsApiController extends Controller
     {
         try{
             $car = Car::where('id',$request->car_id)->first();
+
+            Log::debug(pathinfo(__FILE__, PATHINFO_FILENAME) . ' linha ' .__LINE__. ' ' . print_r($car, 1));
 
             if(empty($car->rented)){
                 $datediff = strtotime($request->date_to) - strtotime($request->date_from);
