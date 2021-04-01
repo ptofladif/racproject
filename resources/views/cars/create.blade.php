@@ -19,8 +19,10 @@
                     </div>
 
                     <div class="col-md-12">
-                        <label class="text-sm text-nowrap">Brand</label>
-                        {!! Form::select('brand_id',[null=>''] +$brands,'',['id'=>'brandId','class'=>'form-control']) !!}
+                        <div class="form-group">
+                            <label class="text-sm text-nowrap">Brand</label>
+                            {!! Form::select('brand_id',[null=>''] +$brands,'',['id'=>'brandId','class'=>'form-control']) !!}
+                        </div>
                     </div>
 
                     <div class="col-md-12">
