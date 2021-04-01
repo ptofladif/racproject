@@ -86,7 +86,7 @@ class CarsRepository
             })
             ->when($brandId = $request->brandId, function ($q) use ($brandId) {
                 $q->whereHas('brand', function ($q2) use($brandId) {
-                    return $q2->where('id',$brandId);
+                    return $q2->where('brand.id',$brandId);
                 });
             })
             ;
