@@ -70,7 +70,7 @@ class CarsRepository
 
         $query
             ->when($id = $request->id, function ($q) use ($id) {
-                $q->where('id',$id);
+                $q->where('cars.id',$id);
             })
             ->when( is_numeric($request->rented) , function ($q) use ($request) {
                 $q->where('rented',$request->rented);
