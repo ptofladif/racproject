@@ -42,9 +42,11 @@ class RentsApiController extends Controller
         try{
             $car = Car::where('id',$request->car_id)->first();
 
+            Log::debug(pathinfo(__FILE__, PATHINFO_FILENAME) . ' linha ' .__LINE__. ' ' . print_r($request->all(), 1));
             Log::debug(pathinfo(__FILE__, PATHINFO_FILENAME) . ' linha ' .__LINE__. ' ' . print_r($car, 1));
 
             if(empty($car->rented)){
+
                 $datediff = strtotime($request->date_to) - strtotime($request->date_from);
 
                 $countdays = abs($datediff / (60 * 60 * 24));
@@ -62,7 +64,7 @@ class RentsApiController extends Controller
                     $car->update(['rented'=>1]);
                 }
 
-                return $newrent;
+                return Response::json($newrent);
             }
 
             return Response::json(array('message' => 'This car is already rented', 'status' => 422));
