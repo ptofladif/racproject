@@ -8,15 +8,6 @@ Route::redirect('/home', '/cars');
 
 Auth::routes(['register' => true]);
 
-Route::group(['prefix' => 'register', 'as' => 'verification.'], function () {
-
-    Route::get('email/verify/{id}', 'VerificationController@verify')->name('verify');
-
-    Route::get('email/resend', 'VerificationController@resend')->name('resend');
-
-});
-
-
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' =>  ['auth','admin']], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
