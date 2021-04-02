@@ -126,6 +126,32 @@
             makeAjaxRequest('POST', url, form, callback);
         };
 
+        let handleUpdate = function () {
+            let form     = $('#form_edit_rent');
+            let idRent = $('#idRent').val();
+
+            let url  = '{!! route('rents.update',[':idRent']) !!}';
+
+            url = url.replace(':idRent',idRent);
+
+            let callback = function (result, status, xhr) {
+
+                handleCloseEdit();
+
+                if (result.status===200) {
+
+                    handleSuccess('Success',result.message);
+
+                    return true;
+
+                } else {
+                    handleErrors('Error',result.message);
+                }
+            };
+
+            makeAjaxRequest('PUT', url, form, callback);
+        };
+
         let makeAjaxRequest = function (method, url, form, callback) {
             callback = callback === undefined ? null : callback;
             displaySpinner();
@@ -185,6 +211,9 @@
             },
             store: function() {
                 handleStore();
+            },
+            update: function () {
+                handleUpdate();
             }
         }
     }();

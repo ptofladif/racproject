@@ -10,7 +10,8 @@
             </div>
             <div class="modal-body">
                 <div class="card-body">
-                    {{ Form::hidden('id', $model->id , array('id' => 'id')) }}
+                    {{ Form::hidden('idRent', $model->id , array('id' => 'idRent')) }}
+                    {{ Form::hidden('idCar', $model->car->id , array('id' => 'idCar')) }}
 
                     <div class="col-md-12">
                         <div class="form-group">
@@ -50,8 +51,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="Rent.closeEdit()">Voltar</button>
-                    <button type="button" class="btn btn-primary"   onclick="Rent.update()">Enviar</button>
+                    <button type="button" class="btn btn-secondary" onclick="Rent.closeEdit()">Back</button>
+                    <button type="button" class="btn btn-primary"   onclick="Rent.update()">Save</button>
                 </div>
             </div>
         </div>

@@ -82,9 +82,11 @@ class RentController extends Controller
                 $car->update(['rented'=>1]);
                 return Response::json(array('message' => 'Rental schedule saved!','status'=> 200));
             }
+
             return Response::json(array('message' => 'It was not possible to save the rental schedule... Please try again!','status'=> 422));
 
         }
+
         return Response::json(array('message' => 'This car is rented... Please choose another!','status'=> 422));
     }
 
@@ -122,16 +124,26 @@ class RentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rent  $rent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rent $rent)
+    public function update(Request $request,Rent $rent)
     {
         abort_unless(\Gate::allows('rent_edit'), 403);
 
-        $rent->update($request->all());
+        $car = Car::where('id',$request->idCar)->first();
 
-        return redirect()->route('admin.rents.index');
+        if($car->rented==1){
+            try{
+                $this->calculateCost($request, $car);
+                $rent->where('id',$request->idRent)->update($request->except(['_token','idRent','idCar','plate','brand']));
+
+                return Response::json(array('message' => 'Rental schedule updated!','status'=> 200));
+            }
+            catch (\Exception $e){
+                return Response::json(array('message' => 'It was not possible to save the rental schedule... Please try again!','status'=> 422));
+            }
+        }
+        return Response::json(array('message' => 'It was not possible to save the rental schedule...','status'=> 422));
     }
 
     /**
@@ -147,5 +159,16 @@ class RentController extends Controller
         $rent->delete();
 
         return back();
+    }
+
+    public function calculateCost(Request $request, Car $car){
+
+        $datediff = strtotime($request->date_to) - strtotime($request->date_from);
+
+        $countdays = abs($datediff / (60 * 60 * 24));
+
+        $request->merge([
+            'total_cost'=>$countdays*$car->daily_price,
+        ]);
     }
 }
