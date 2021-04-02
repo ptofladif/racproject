@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group has-feedback">
                     <div class="input-group">
-                        <input type="text" class="form-control @error('vat') is-invalid @enderror" value="{{ old('vat') }}" placeholder="{{ trans('global.user.fields.vat') }}" name="vat" required autofocus>
+                        <input type="text" class="form-control @error('vat') is-invalid @enderror" value="{{ old('vat') }}" placeholder="{{ trans('global.user.fields.vat') }}" name="vat" required autocomplete=off>
                         @error('vat')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group has-feedback">
                     <div class="input-group">
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="{{ trans('global.user.fields.phone') }}" name="phone" required autofocus>
+                        <input type="text" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="{{ trans('global.user.fields.phone') }}" name="phone" required autocomplete=off>
                         @error('phone')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group has-feedback">
                     <div class="input-group">
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="{{ trans('global.login_email') }}" name="email">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="{{ trans('global.login_email') }}" name="email" required autocomplete=off>
                         @error('email')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -63,7 +63,7 @@
 
                 <div class="form-group has-feedback">
                     <div class="input-group">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{ trans('global.login_password') }}" name="password" required>
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{ trans('global.login_password') }}" name="password" required autocomplete=off>
                         @error('password')
                         <div class="invalid-feedback">
                             {{ $message }}
