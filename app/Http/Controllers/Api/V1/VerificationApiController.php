@@ -29,6 +29,7 @@ class VerificationApiController extends Controller
     }
 
     public function resend() {
+        dd(1);
         if (auth()->user()->hasVerifiedEmail()) {
             return response()->json(["msg" => "Email already verified."], 400);
         }
