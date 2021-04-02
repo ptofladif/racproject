@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Rent;
 use Illuminate\Http\Request;
 use App\Repository\CarsRepository;
 use App\Models\Brand;
@@ -24,6 +25,8 @@ class CarController extends Controller
         $viewModel=[
             'brands'=>$brands,
         ];
+
+        $this->updateRented();
 
         return view('cars.index', $viewModel);
     }
@@ -128,7 +131,7 @@ class CarController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Car  $car
+     * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
     public function destroy(Car $car)
@@ -138,5 +141,23 @@ class CarController extends Controller
         $car->delete();
 
         return back();
+    }
+
+    public function updateRented(){
+
+        $rents = Rent::with('car')
+            ->where('date_to','<=',now())
+            ->whereHas('car', function ($q) {
+                $q->where('rented', 1);
+            })
+            ->pluck('car_id','car_id')
+            ->toArray()
+            ;
+
+        Car::whereIn('id',$rents)->update(
+            [
+                'rented'=>0
+            ]
+        );
     }
 }
