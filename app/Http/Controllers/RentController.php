@@ -68,13 +68,7 @@ class RentController extends Controller
 
         if(empty($car->rented)){
 
-            $datediff = strtotime($request->date_to) - strtotime($request->date_from);
-
-            $countdays = abs($datediff / (60 * 60 * 24));
-
-            $request->merge([
-                'total_cost'=>$countdays*$car->daily_price,
-            ]);
+            $this->calculateCost($request, $car);
 
             $rent = Rent::create($request->except(['_token','brand','driver']));
 
