@@ -18,9 +18,9 @@
 
 //Route::group(['prefix' => 'v1', 'as' => 'verification.', 'namespace' => 'Api\V1'], function () {
 //
-//    Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verify');
-//
-//    Route::get('email/resend', 'VerificationApiController@resend')->name('resend');
+////    Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verify');
+////
+////    Route::get('email/resend', 'VerificationApiController@resend')->name('resend');
 //
 //});
 
@@ -30,11 +30,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::group(['prefix' => 'v1', 'as' => 'client.', 'namespace' => 'Api\V1'], function () {
 
         Route::post('/register', 'AuthApiController@register')->name('register.api');
-
-        Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verify');
-
-        Route::get('email/resend', 'VerificationApiController@resend')->name('resend');
-
 
         Route::post('/login', 'AuthApiController@login')->name('login.api');
 
