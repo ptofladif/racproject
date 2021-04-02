@@ -4,15 +4,18 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::redirect('/', '/login');
 
-Route::redirect('/home', '/cars');
+//Route::redirect('/home', '/cars');
+
+//Route::redirect('/home', '/admin');
 
 Auth::routes(['register' => true]);
 
 //Auth::routes(['verify' => true]);
+Route::group(['middleware' =>  ['auth']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' =>  ['auth','admin']], function () {
-
-    Route::get('/', 'HomeController@index')->name('home');
 
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
 

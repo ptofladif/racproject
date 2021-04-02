@@ -1,13 +1,15 @@
 @extends('layouts.admin')
-@section('content')
-<div class="content">
-    <div class="row">
-        <div class="col-lg-12">
-            Home
+
+@section('main-content')
+    <div class="card">
+        <div class="card-header with-border">
+            <div class="col-lg-12">
+                Welcome
+            </div>
         </div>
     </div>
-</div>
 @endsection
+
 @section('scripts')
 @parent
 
