@@ -83,7 +83,7 @@
             });
         },
         displayText: function (item) {
-            return item.name + ' | ' + item.nif;
+            return item.name + ' | ' + item.vat;
         }
     });
 
