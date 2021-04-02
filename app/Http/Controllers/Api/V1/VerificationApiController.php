@@ -20,7 +20,7 @@ class VerificationApiController extends Controller
             $user->markEmailAsVerified();
             return response()->json(["msg" => "Email verification completed"]);
         }else{
-            return response()->json(["msg" => "Email already verified"]);
+            return response()->json(["msg" => "Email already verified"], 400);
         }
 
 
