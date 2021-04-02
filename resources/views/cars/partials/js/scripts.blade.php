@@ -230,7 +230,7 @@
         $('#carstable tbody').on('click', 'td.details-control', function () {
 
             var tr = $(this).closest('tr');
-            var row = dataTableInstance.row(tr);
+            var row = carDataTableInstance.row(tr);
 
             var tableId = 'car_' + row.data().id;
 
@@ -251,7 +251,7 @@
 
             let tr = $(this).closest('tr');
 
-            let row = dataTableInstance.row(tr).data();
+            let row = carDataTableInstance.row(tr).data();
 
             if(row.rented===0){
                 let route = '{!! route('rents.create') !!}';
