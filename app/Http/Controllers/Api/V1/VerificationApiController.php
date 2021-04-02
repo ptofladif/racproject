@@ -18,9 +18,12 @@ class VerificationApiController extends Controller
 
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
+            return response()->json(["msg" => "Email verification completed"]);
+        }else{
+            return response()->json(["msg" => "Email already verified"]);
         }
 
-        return response()->json(["msg" => "Email verification completed"]);
+
 
 //        return redirect()->to('/');
     }
