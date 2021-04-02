@@ -20,8 +20,9 @@ Route::group(['prefix' => 'v1', 'as' => 'verification.', 'namespace' => 'Api\V1'
 
     Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verify');
 
-    Route::get('email/resend', 'VerificationApiController@resend')->name('resend');
-
+    Route::group(['middleware' =>['auth:api']], function () {
+        Route::get('email/resend', 'VerificationApiController@resend')->name('resend');
+    });
 });
 
 
