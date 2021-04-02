@@ -48,8 +48,8 @@ class AppServiceProvider extends ServiceProvider
 
         Validator::extend('nifextension', function($attribute, $value, $parameters, $validator) {
 //            dd($attribute, $value, $parameters, $validator);
-            if(!empty($attribute) && $attribute=='nif' && !empty($value)){
-                return Helper::valida_nif($value);
+            if(!empty($attribute) && $attribute=='vat' && !empty($value)){
+                return Helper::validate_vat($value);
             }
         });
         Schema::defaultstringLength(191);

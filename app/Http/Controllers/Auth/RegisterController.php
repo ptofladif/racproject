@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -50,6 +50,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'vat' => ['required','unique:users','nifextension'],
+            'phone' => ['required','unique:users','regex:/9[1236]\d{7}/'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -59,14 +61,50 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
+            'vat' => $data['vat'],
+            'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user->roles()->sync(3);
+
+//        $user->sendEmailVerificationNotification();
+
+        return $user;
     }
 }
+
+//protected function validator(array $data)
+//{
+//    return Validator::make($data, [
+//        'name' => 'required|string|max:255',
+//        'phone' => 'required|unique:users|regex:/9[1236]\d{7}/',
+//        'email' => 'required|email|unique:users|max:255',
+//        'password' => 'required|string|min:8|confirmed',
+//        'vat' => 'required|unique:users|nifextension',
+//    ]);
+//}
+
+//protected function create(array $data)
+//{
+//    $user = User::create([
+//        'name' => $data['name'],
+//        'vat' => $data['vat'],
+//        'phone' => $data['phone'],
+//        'email' => $data['email'],
+//        'password' => Hash::make($data['password']),
+//    ]);
+//
+//    $user->roles()->sync(3);
+//
+//    $user->sendEmailVerificationNotification();
+//
+//    return $user;
+//}

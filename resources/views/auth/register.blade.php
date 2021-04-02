@@ -22,8 +22,28 @@
 
                 <div class="form-group has-feedback">
                     <div class="input-group">
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="{{ trans('global.user_name') }}" name="name" required autofocus>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="{{ trans('global.user.fields.name') }}" name="name" required autofocus>
                         @error('name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
+                    <div class="input-group">
+                        <input type="text" class="form-control @error('vat') is-invalid @enderror" value="{{ old('vat') }}" placeholder="{{ trans('global.user.fields.vat') }}" name="vat" required autofocus>
+                        @error('vat')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
+                    <div class="input-group">
+                        <input type="text" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="{{ trans('global.user.fields.phone') }}" name="phone" required autofocus>
+                        @error('phone')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

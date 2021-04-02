@@ -11,7 +11,7 @@ class Create1555355612782UsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('nif',15)->nullable();
+            $table->string('vat',15)->nullable();
             $table->string('phone')->nullable();
             $table->string('email');
             $table->datetime('email_verified_at')->nullable();

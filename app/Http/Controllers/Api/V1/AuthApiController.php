@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Mail\RegisterEmail;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
-class ApiAuthController extends Controller
+class AuthApiController extends Controller
 {
     public function login(Request $request)
     {
@@ -55,7 +57,7 @@ class ApiAuthController extends Controller
             'phone' => 'required|unique:users|regex:/9[1236]\d{7}/',
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|string|min:8|confirmed',
-            'nif' => 'required|unique:users|nifextension',
+            'vat' => 'required|unique:users|nifextension',
         ]);
 
         if ($validator->fails()) {
@@ -73,7 +75,24 @@ class ApiAuthController extends Controller
 
         $user = User::create($input);
 
+        $user->roles()->sync(3);
+
         $success['token'] = $user->createToken('Laravel Password Grant Client')->accessToken;
+
+        $user->sendEmailVerificationNotification();
+
+//        if($user) {
+//
+//            $emailSubject = 'Notification from Rac App';
+//
+//            $title = 'Email Registration';
+//
+//            Mail::send( new RegisterEmail($emailSubject, $title, $user) );
+//        }
+
+        $success['token'] = $user->createToken('Laravel Password Grant Client')->accessToken;
+
+
 
         return response()->json([
             'success' => true,

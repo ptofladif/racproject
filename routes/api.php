@@ -18,15 +18,24 @@
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
 
+    Route::group(['prefix' => 'v1', 'as' => 'verification.', 'namespace' => 'Api\V1'], function () {
+
+        Route::get('email/verify/{id}', 'VerificationController@verify')->name('verify');
+
+        Route::get('email/resend', 'VerificationController@resend')->name('resend');
+
+    });
+
     Route::group(['prefix' => 'v1', 'as' => 'client.', 'namespace' => 'Api\V1'], function () {
 
-        Route::post('/register', 'ApiAuthController@register')->name('register.api');
+        Route::post('/register', 'AuthApiController@register')->name('register.api');
 
-        Route::post('/login', 'ApiAuthController@login')->name('login.api');
+
+        Route::post('/login', 'AuthApiController@login')->name('login.api');
 
         Route::group(['middleware' =>['auth:api']], function () {
 
-            Route::get('/logout', 'ApiAuthController@logout')->name('logout.api');
+            Route::get('/logout', 'AuthApiController@logout')->name('logout.api');
 
             Route::group(['prefix' => 'cars'], function () {
                 Route::get('/index', 'CarsApiController@index');
