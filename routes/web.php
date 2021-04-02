@@ -4,7 +4,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::redirect('/', '/login');
 
-Route::redirect('/home', '/car');
+Route::redirect('/home', '/cars');
 
 Auth::routes(['register' => true]);
 
