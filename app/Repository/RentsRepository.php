@@ -77,7 +77,8 @@ class RentsRepository
      * @param Request $request
      */
     protected function handleFilters(Builder $query, Request $request) {
-        if(Auth::user()->cannot('rent_access')){
+
+        if(!empty(auth()->user())&&auth()->user()->cannot('rent_access')){
             $request->merge(
                 [
                     'user_id'    => Auth::user()->id,

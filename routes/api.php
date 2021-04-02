@@ -52,6 +52,4 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     });
 });
 
-Route::group(['middleware' =>['admin']], function () {
-    Route::get('/master_rent_details/{carId}', 'RentController@search')->name('api.master_rent_details');
-});
+Route::get('/master_rent_details/{carId}', 'RentController@search')->name('api.master_rent_details');
