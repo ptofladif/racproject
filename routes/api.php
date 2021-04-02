@@ -26,8 +26,6 @@ Route::group(['prefix' => 'v1', 'as' => 'verification.', 'namespace' => 'Api\V1'
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
 
-
-
     Route::group(['prefix' => 'v1', 'as' => 'client.', 'namespace' => 'Api\V1'], function () {
 
         Route::post('/register', 'AuthApiController@register')->name('register.api');
