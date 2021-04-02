@@ -15,13 +15,10 @@
 </script>
 
 <script>
-    // const Handlebars = require("handlebars");
-
-{{--    @include("handlebars")--}}
 
     let template = Handlebars.compile($("#details-template").html());
 
-    let dataTableInstance = null;
+    let carDataTableInstance = null;
 
     let Car = function () {
 
@@ -35,7 +32,7 @@
 
         let handleSearch = function () {
 
-            dataTableInstance = $('#carstable').DataTable({
+            carDataTableInstance = $('#carstable').DataTable({
                 autoWidth: false,
                 processing: false,
                 serverSide: true,
@@ -112,7 +109,7 @@
                 setAjaxParam($(this).attr("name"), $(this).val());
             });
 
-            dataTableInstance.ajax.reload();
+            carDataTableInstance.ajax.reload();
         };
 
         let handleCreate = function () {
@@ -199,7 +196,7 @@
             infoModalVM.type = 'success';
             infoModalVM.title = title;
             infoModalVM.body = message;
-            dataTableRentInstance.draw(false);
+            carDataTableInstance.draw(false);
             $('#infoModal').modal('show');
         };
 
