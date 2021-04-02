@@ -75,8 +75,6 @@ class RegisterController extends Controller
 
         $user->roles()->sync(3);
 
-//        $user->sendEmailVerificationNotification();
-
         return $user;
     }
 }

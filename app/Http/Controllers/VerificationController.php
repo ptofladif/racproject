@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class VerificationApiController extends Controller
+class VerificationController extends Controller
 {
     public function verify($user_id, Request $request) {
         if (!$request->hasValidSignature()) {
