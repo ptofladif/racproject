@@ -18,7 +18,7 @@ class RentController extends Controller
      */
     public function index()
     {
-        abort_unless(\Gate::allows('rent_access'), 403);
+//        abort_unless(\Gate::allows('rent_access'), 403);
 
         $rents = Rent::all();
 

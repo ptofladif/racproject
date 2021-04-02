@@ -5,7 +5,9 @@
 @endsection
 
 @section('main-content')
-    @include('rents.partials.filter')
+    @can('rent_access')
+        @include('rents.partials.filter')
+    @endcan
     @include('rents.partials.table')
     <div id="modal-rent-create"></div>
     <div id="modal-rent-edit"></div>

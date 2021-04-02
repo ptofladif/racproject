@@ -7,6 +7,7 @@ use App\Models\Brand;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Yajra\DataTables\Facades\DataTables;
@@ -46,6 +47,7 @@ class RentsRepository
         if($request->api){
             return Response::json($Rents->get());
         }
+
         return DataTables::of($Rents)
             ->editColumn('actions', function (Rent $rent) {
                 return View::make('rents.partials.table-row-actions')
@@ -75,7 +77,18 @@ class RentsRepository
      * @param Request $request
      */
     protected function handleFilters(Builder $query, Request $request) {
+        if(Auth::user()->cannot('rent_access')){
+            $request->merge(
+                [
+                    'user_id'    => Auth::user()->id,
+                ]
+            );
+        }
+
         $query
+            ->when($user_id = $request->user_id, function ($q) use ($user_id) {
+                return $q->where('user_id',$user_id);
+            })
             ->when($plate = $request->plate, function ($q) use ($plate) {
                 $q->whereHas('car', function ($q2) use($plate) {
                     return $q2->where('plate','like','%'.$plate.'%');
@@ -92,5 +105,6 @@ class RentsRepository
                 });
             })
             ;
+
     }
 }
