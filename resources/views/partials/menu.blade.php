@@ -87,7 +87,7 @@
                     </li>
                 @endcan
 
-                @can('car_access')
+{{--                @can('car_access')--}}
                     <li class="nav-item">
                         <a href="{{ route("cars.index") }}" class="nav-link {{ request()->is('cars') || request()->is('cars/*') ? 'active' : '' }}">
                             <i class="fas fa-car">
@@ -98,8 +98,8 @@
                             </p>
                         </a>
                     </li>
-                @endcan
-                @can('rent_access')
+{{--                @endcan--}}
+{{--                @can('rent_access')--}}
                     <li class="nav-item">
                         <a href="{{ route("rents.index") }}" class="nav-link {{ request()->is('rents') || request()->is('rents/*') ? 'active' : '' }}">
                             <i class="fas fa-list">
@@ -110,7 +110,7 @@
                             </p>
                         </a>
                     </li>
-                @endcan
+{{--                @endcan--}}
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <i class="fas fa-sign-out-alt">

@@ -25,16 +25,17 @@
                             {!! Form::input('text', 'brand', $model->brand->title, ['class' => 'form-control  input-sm','readonly']) !!}
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Utilizador</label>
-                            {!! Form::input('text', 'driver','', ['id'=>'driver','class'=>'form-control','autocomplete'=>'off','data-validation'=>'required not_numeric']) !!}
-                            <div class="hidden">
-                                {!! Form::input('text', 'user_id','', ['id'=>'clientId','class'=>'form-control','autocomplete'=>'off']) !!}
+                    @can('rent_access')
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Utilizador</label>
+                                {!! Form::input('text', 'driver','', ['id'=>'driver','class'=>'form-control','autocomplete'=>'off','data-validation'=>'required not_numeric']) !!}
+                                <div class="hidden">
+                                    {!! Form::input('text', 'user_id','', ['id'=>'clientId','class'=>'form-control','autocomplete'=>'off']) !!}
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                    @endcan
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Schedule Date From</label>

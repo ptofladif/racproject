@@ -18,7 +18,7 @@ class CarController extends Controller
      */
     public function index()
     {
-       abort_unless(\Gate::allows('car_access'), 403);
+//       abort_unless(\Gate::allows('car_access'), 403);
 
         $brands = Brand::orderBy('title')->pluck('title','id')->toArray();
 

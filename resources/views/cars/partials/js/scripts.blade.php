@@ -52,6 +52,9 @@
                 drawCallback: function (oSettings) { // run some code on table redraw
                     let api = this.api();
                     api.columns([5]).visible(false);
+                    @cannot('rent_access')
+                        api.columns([0]).visible(false);
+                    @endcannot
                     displaySpinner(false);
                 },
                 initComplete: function(settings, json){

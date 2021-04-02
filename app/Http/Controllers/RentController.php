@@ -6,6 +6,7 @@ use App\Models\Rent;
 use Illuminate\Http\Request;
 use App\Repository\RentsRepository;
 use App\Models\Car;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 
 class RentController extends Controller
@@ -46,6 +47,8 @@ class RentController extends Controller
     {
         abort_unless(\Gate::allows('rent_create'), 403);
 
+        if(auth()->user())
+
         $model = Car::with('brand')
             ->where('id',$request->id)
             ->first();
@@ -61,7 +64,6 @@ class RentController extends Controller
      */
     public function store(Request $request)
     {
-
         abort_unless(\Gate::allows('rent_create'), 403);
 
         $car = Car::where('plate',$request->plate)->first();
@@ -69,6 +71,14 @@ class RentController extends Controller
         if(empty($car->rented)){
 
             $this->calculateCost($request, $car);
+
+            if(Auth::user()->cannot('rent_access')){
+                $request->merge(
+                    [
+                        'user_id'    => Auth::user()->id,
+                    ]
+                );
+            }
 
             $rent = Rent::create($request->except(['_token','brand','driver']));
 

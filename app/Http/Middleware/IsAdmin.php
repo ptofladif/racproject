@@ -16,7 +16,7 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
         if (\Auth::user()->cannot('user_management_access')){
-            return redirect()->guest('/cars');
+            return redirect()->guest('/');
         }
         return $next($request);
     }
